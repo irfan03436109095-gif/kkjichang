@@ -1,0 +1,1 @@
+(()=>{document.querySelectorAll('.prose a[href]').forEach(link=>{try{const url=new URL(link.href);if(url.hash.includes('/register?code=')){const rel=new Set(link.rel.split(/\s+/).filter(Boolean));['sponsored','noopener','noreferrer'].forEach(x=>rel.add(x));link.rel=[...rel].join(' ');}}catch{}});})();

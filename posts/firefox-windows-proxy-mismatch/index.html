@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="qihang-guide">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置 · 可靠机场推荐</title>
+<meta name="description" content="其他浏览器能用但 Firefox 不通时，先比较浏览器独立代理与 Windows 系统代理，按单项修改和相同任务复测定位设置差异。">
+<meta name="keywords" content="Firefox代理设置,Windows机场代理,浏览器无法连接">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/firefox-windows-proxy-mismatch/">
+<meta property="og:title" content="Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置">
+<meta property="og:description" content="其他浏览器能用但 Firefox 不通时，先比较浏览器独立代理与 Windows 系统代理，按单项修改和相同任务复测定位设置差异。">
+<meta property="og:url" content="https://kkjichang.cc/posts/firefox-windows-proxy-mismatch/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="可靠机场推荐">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png"><meta property="og:image:alt" content="可靠机场推荐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置">
+<meta name="twitter:description" content="其他浏览器能用但 Firefox 不通时，先比较浏览器独立代理与 Windows 系统代理，按单项修改和相同任务复测定位设置差异。">
+<meta name="twitter:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-21T23:26:36&#43;08:00"><meta property="article:modified_time" content="2026-09-21T23:44:17&#43;08:00"><meta property="article:tag" content="客户端"><meta property="article:tag" content="故障排查"><meta property="article:tag" content="多设备">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/firefox-windows-proxy-mismatch/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-21T23:44:17+08:00","datePublished":"2026-09-21T23:26:36+08:00","description":"其他浏览器能用但 Firefox 不通时，先比较浏览器独立代理与 Windows 系统代理，按单项修改和相同任务复测定位设置差异。","headline":"Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/firefox-windows-proxy-mismatch/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/firefox-windows-proxy-mismatch/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/firefox-windows-proxy-mismatch/","name":"Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置","position":2}]}]}</script>
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/style.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/search.css"><script defer src="https://kkjichang.cc/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/skin.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/reader.css">
+<link rel="icon" href="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/artalk.css"><script defer src="https://kkjichang.cc/assets/theme/artalk.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/theme.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/reader.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/viewer.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://kkjichang.cc/assets/theme/interactions.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/referral-links.js"></script>
+
+
+</head>
+
+<body class="article-page">
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://kkjichang.cc/"><img src="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png" alt="" width="38" height="38"><span>可靠机场推荐</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://kkjichang.cc/">首页</a><a href="https://kkjichang.cc/posts/airport-recommendation-start/">机场推荐</a><a href="https://kkjichang.cc/posts/flybit-99ba-comparison/">试用对比</a><a href="https://kkjichang.cc/categories/plans-budget/">套餐与预算</a><a href="https://kkjichang.cc/categories/client-start/">客户端上手</a><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a><a href="https://kkjichang.cc/categories/help-security/">排障与安全</a></nav>
+<a class="search-toggle" href="https://kkjichang.cc/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+
+<div class="article-viewport"><div class="article-scroll">
+<main id="main" tabindex="-1" class="shell article-shell">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置</span></li></ol></nav>
+
+
+
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>阅读时光</div>
+<h1 data-pagefind-meta="title">Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-21T23:26:36&#43;08:00">2026-09-21</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://kkjichang.cc/categories/client-start/">客户端上手</a></div>
+</header>
+<div class="prose"><blockquote>
+<p>本文含推广链接，相关信息与选购建议供你核对；未进行付费套餐实测。</p>
+</blockquote>
+<p>同一台电脑上，一个浏览器能访问，Firefox 却失败，先比较浏览器设置，不必立刻换机场。Firefox 可以采用系统代理，也可以使用独立的手动配置或自动配置地址；因此系统显示代理已开启，并不代表 Firefox 一定跟随。</p>
+<h2 id="heading">先保存两个设置界面</h2>
+<p>在 Windows 的“设置 → 网络和 Internet → 代理”查看当前采用的方式。微软文档区分自动检测、设置脚本和手动代理，VPN 连接的代理还可以单独设置。这里只核对与你正在使用的网络相关的项目。</p>
+<p>再打开 Firefox 设置，搜索“代理”并进入连接设置。不同版本入口位置可能变化，搜索设置通常比照搬旧截图更容易定位。</p>
+<h2 id="heading-1">比较目标是否一致</h2>
+<table>
+<thead>
+<tr>
+<th>Firefox 当前选择</th>
+<th>需要核对</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>使用系统代理</td>
+<td>Windows 代理是否指向正在运行的客户端</td>
+</tr>
+<tr>
+<td>手动代理</td>
+<td>地址、端口和协议是否与客户端提供值一致</td>
+</tr>
+<tr>
+<td>自动配置 URL</td>
+<td>该配置是否仍是自己要用的来源</td>
+</tr>
+<tr>
+<td>无代理</td>
+<td>是否与本次测试目标一致</td>
+</tr>
+</tbody>
+</table>
+<p>不要从网上复制一个常见端口作为答案。端口应该来自本机客户端的实际设置；别人电脑上的数值可能不同。</p>
+<h2 id="heading-2">用相同请求复测</h2>
+<p>先记录失败页面和具体提示，再只改变 Firefox 中与目标不一致的那一项。用同一网络、同一节点和同一网页复测。如果恢复正常，保留这项改动并记录；如果没有变化，回到原状态再检查其他因素。</p>
+<p>Mozilla 文档还提示扩展可能控制连接设置。若页面显示这类控制信息，先查清扩展来源与用途，不要把受管理环境中的设置强行改为个人偏好。</p>
+<h2 id="heading-3">还没解决时收集什么</h2>
+<p>记录两个浏览器的结果、Firefox 的代理方式、客户端是否运行，以及错误发生时间。不要把账号、订阅令牌或完整配置截图公开。若所有浏览器都失败，再扩大到本地网络与节点排查。</p>
+<p>这轮测试的目标是找出差异。如果只是一个浏览器的配置问题，更换付费套餐通常不是第一步。</p>
+<h2 id="heading-4">参考与核对</h2>
+<ul>
+<li><a href="https://support.mozilla.org/en-US/kb/connection-settings-firefox">Mozilla：Firefox 连接设置</a></li>
+<li><a href="https://support.microsoft.com/en-us/windows/experience/connectivity-networking/use-a-proxy-server-in-windows">Microsoft：Windows 代理设置</a></li>
+</ul>
+<p>资料核对日期：2026-09-21。</p>
+<h2 id="heading-5">试用与注册入口</h2>
+<p>有意进一步了解，可使用本站提供的推广入口：<a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit 注册入口</a>，邀请码 <strong>gPinVG8C</strong>；<a href="https://99ba.net/#/register?code=sExBbdk9">99吧注册入口</a>，邀请码 <strong>sExBbdk9</strong>。若链接先打开导航页，请从该页当前入口继续，并在注册表单核对邀请码是否保留。</p>
+<p>推广说明：经这些链接注册或购买，推荐方可能获得奖励；邀请码不等于优惠码，优惠与试用资格以服务方当前页面为准。</p>
+<h2 id="heading-6">继续阅读</h2>
+<ul>
+<li><a href="/posts/v2rayn-first-use-check/">v2rayN 导入订阅后怎么上网？配置、系统代理与路由检查</a></li>
+<li><a href="/posts/rule-global-tun-explained/">规则、全局与 TUN 是一回事吗？新手先分清接管与分流</a></li>
+<li><a href="/posts/connection-timeout-cross-check/">机场连接超时如何定位？用两台设备和两种网络做对照</a></li>
+</ul>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/clients/"># 客户端</a><a href="https://kkjichang.cc/tags/troubleshooting/"># 故障排查</a><a href="https://kkjichang.cc/tags/multiple-devices/"># 多设备</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/evening-airport-test-log/">← 上一篇</a><a href="https://kkjichang.cc/posts/rule-global-tun-explained/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+
+<div class="article-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先保存两个设置界面</a><a class="level-2" href="#heading-1">比较目标是否一致</a><a class="level-2" href="#heading-2">用相同请求复测</a><a class="level-2" href="#heading-3">还没解决时收集什么</a><a class="level-2" href="#heading-4">参考与核对</a><a class="level-2" href="#heading-5">试用与注册入口</a><a class="level-2" href="#heading-6">继续阅读</a></nav></aside>
+<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
+<span class="ad-badge">广告 <span aria-hidden="true">↗</span></span>
+
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<p>邀请码：<strong>gPinVG8C</strong></p>
+<p><strong>查看注册入口 →</strong></p>
+<p>推广链接 · 资格与费用以服务方页面为准</p>
+</div>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
+<span class="ad-badge">广告 <span aria-hidden="true">↗</span></span>
+
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<p>邀请码：<strong>sExBbdk9</strong></p>
+<p><strong>查看注册入口 →</strong></p>
+<p>推广链接 · 资格与费用以服务方页面为准</p>
+</div>
+</a></aside></div>
+
+</main>
+</div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+
+<footer class="site-footer">
+
+<span>© 2026可靠机场推荐</span>
+</footer>
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://kkjichang.cc/pagefind/pagefind-component-ui.js" data-stylesheet="https://kkjichang.cc/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://kkjichang.cc/pagefind/" base-url="https://kkjichang.cc/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/a0eba5cb-3d0e-4b70-8252-982f25ecab62/","pageTitle":"Firefox 单独连不上机场代理？检查浏览器与 Windows 两处设置","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+
+</body></html>
+
+
