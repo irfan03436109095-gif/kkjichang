@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="qihang-guide">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机场打开网页正常但上传失败？MTU 与分片排查指南 · 可靠机场推荐</title>
+<meta name="description" content="机场打开网页正常但上传失败怎么办？了解代理隧道中的 MTU、PMTU 与数据包分片，用网络、节点和文件大小对照排查机场上传卡住、大文件失败等问题。">
+<meta name="keywords" content="机场推荐,机场上传失败,代理MTU,路径MTU,大文件上传失败,机场节点排查">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/airport-upload-failure-mtu-check/">
+<meta property="og:title" content="机场打开网页正常但上传失败？MTU 与分片排查指南">
+<meta property="og:description" content="机场打开网页正常但上传失败怎么办？了解代理隧道中的 MTU、PMTU 与数据包分片，用网络、节点和文件大小对照排查机场上传卡住、大文件失败等问题。">
+<meta property="og:url" content="https://kkjichang.cc/posts/airport-upload-failure-mtu-check/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="可靠机场推荐">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png"><meta property="og:image:alt" content="可靠机场推荐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机场打开网页正常但上传失败？MTU 与分片排查指南">
+<meta name="twitter:description" content="机场打开网页正常但上传失败怎么办？了解代理隧道中的 MTU、PMTU 与数据包分片，用网络、节点和文件大小对照排查机场上传卡住、大文件失败等问题。">
+<meta name="twitter:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-22T20:08:03&#43;08:00"><meta property="article:modified_time" content="2026-09-22T20:09:12&#43;08:00"><meta property="article:tag" content="机场推荐"><meta property="article:tag" content="代理分流"><meta property="article:tag" content="网络测速"><meta property="article:tag" content="故障排查">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/airport-upload-failure-mtu-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-22T20:09:12+08:00","datePublished":"2026-09-22T20:08:03+08:00","description":"机场打开网页正常但上传失败怎么办？了解代理隧道中的 MTU、PMTU 与数据包分片，用网络、节点和文件大小对照排查机场上传卡住、大文件失败等问题。","headline":"机场打开网页正常但上传失败？MTU 与分片排查指南","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/airport-upload-failure-mtu-check/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/airport-upload-failure-mtu-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/airport-upload-failure-mtu-check/","name":"机场打开网页正常但上传失败？MTU 与分片排查指南","position":2}]}]}</script>
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/style.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/search.css"><script defer src="https://kkjichang.cc/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/skin.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/reader.css">
+<link rel="icon" href="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
+<link rel="stylesheet" href="https://kkjichang.cc/assets/theme/artalk.css"><script defer src="https://kkjichang.cc/assets/theme/artalk.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/theme.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/reader.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/viewer.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://kkjichang.cc/assets/theme/interactions.js"></script>
+<script defer src="https://kkjichang.cc/assets/theme/referral-links.js"></script>
+
+
+</head>
+
+<body class="article-page">
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://kkjichang.cc/"><img src="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png" alt="" width="38" height="38"><span>可靠机场推荐</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://kkjichang.cc/">首页</a><a href="https://kkjichang.cc/posts/airport-recommendation-start/">机场推荐</a><a href="https://kkjichang.cc/posts/flybit-99ba-comparison/">试用对比</a><a href="https://kkjichang.cc/categories/plans-budget/">套餐与预算</a><a href="https://kkjichang.cc/categories/client-start/">客户端上手</a><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a><a href="https://kkjichang.cc/categories/help-security/">排障与安全</a></nav>
+<a class="search-toggle" href="https://kkjichang.cc/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+
+<div class="article-viewport"><div class="article-scroll">
+<main id="main" tabindex="-1" class="shell article-shell">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场打开网页正常但上传失败？MTU 与分片排查指南</span></li></ol></nav>
+
+
+
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>阅读时光</div>
+<h1 data-pagefind-meta="title">机场打开网页正常但上传失败？MTU 与分片排查指南</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-22T20:08:03&#43;08:00">2026-09-22</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a></div>
+</header>
+<div class="prose"><p>搜索机场推荐时，很多人会测试网页能不能打开、视频能不能播放，却很少检查上传。实际使用中可能出现一种让人困惑的情况：网页浏览正常，小文件也能发送，但上传图片、附件或较大的文件时一直卡住，甚至在接近完成时失败。</p>
+<p>这种现象不一定是机场“速度不够”。如果故障只在特定网络、节点或客户端模式下出现，路径 MTU、分片处理和隧道封装也值得检查。本文提供一套普通用户能执行的排查顺序，帮助你先缩小范围，再决定是否更换节点、调整客户端或联系服务方。</p>
+<h2 id="heading">先判断是不是“只有上传失败”</h2>
+<p>不要一开始就修改系统网络参数。先用同一台设备、同一个节点和同一接入网络，记录下面四项：</p>
+<table>
+<thead>
+<tr>
+<th>测试项目</th>
+<th>需要记录什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通网页</td>
+<td>能否稳定打开，是否只有某个网站异常</td>
+</tr>
+<tr>
+<td>小文件上传</td>
+<td>文件大小、目标网站、是否完成</td>
+</tr>
+<tr>
+<td>较大文件上传</td>
+<td>在什么阶段停止，是否显示超时或重试</td>
+</tr>
+<tr>
+<td>下载或播放</td>
+<td>是否同时异常，还是只有上传受影响</td>
+</tr>
+</tbody>
+</table>
+<p>如果所有网站、下载和上传都失败，应先按<a href="/posts/connection-timeout-cross-check/">机场连接超时排查方法</a>检查网络、客户端和节点。如果只有一个目标网站异常，还要考虑网站限制、账号权限、浏览器扩展或服务端故障，不能直接归因于机场。</p>
+<p>真正值得继续检查 MTU 的信号通常是：小请求可以完成，较大传输在特定路径上反复停住；换接入网络或切换客户端接管方式后，结果又明显变化。这些现象只能说明 MTU 是候选原因之一，仍需要对照验证。</p>
+<h2 id="mtu-">MTU 为什么会影响隧道里的上传？</h2>
+<p>MTU（最大传输单元）可以理解为某个网络接口一次能够承载的最大 IP 数据包大小。代理或隧道会在原始数据外增加额外头部，留给原始数据的空间可能随之减少。</p>
+<p>Cloudflare 的网络文档指出，封装会增加额外头部；如果没有考虑这些开销，数据包可能超过路径允许的大小，继而被丢弃或分片，造成性能下降或连接失败。<a href="https://developers.cloudflare.com/cloudflare-wan/reference/mtu-mss/">来源：Cloudflare 的 MTU 与 MSS 说明</a></p>
+<p>路径 MTU（PMTU）不是只看电脑网卡上的一个数字，而是整条路径中各链路可通过大小的最小值。IETF 的 RFC 1191 将 PMTU 定义为路径上各跳 MTU 的最小值，并说明发送端可根据“需要分片”等反馈降低估计值。<a href="https://datatracker.ietf.org/doc/rfc1191/">来源：IETF RFC 1191</a></p>
+<p>这也解释了为什么同一配置可能在家庭宽带正常，在手机热点、校园网或酒店 Wi-Fi 上异常：接入网络和实际路由变了，可用路径 MTU也可能不同。仅凭现象无法确定具体数值，更不能把某个网上常见的 MTU 数字直接套给所有设备。</p>
+<h2 id="heading-1">第一步：固定目标，做两种网络对照</h2>
+<p>选择一个你有权上传、并且平时确实需要使用的目标。准备一个很小的测试文件和一个稍大的非敏感文件，保持客户端、节点、浏览器和账号不变，然后分别在两种正常接入网络下测试，例如家庭宽带与手机热点。</p>
+<p>记录格式可以很简单：</p>
+<table>
+<thead>
+<tr>
+<th>条件</th>
+<th>小文件</th>
+<th>较大文件</th>
+<th>错误信息</th>
+<th>完成时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>家庭宽带 + 节点 A</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+<tr>
+<td>手机热点 + 节点 A</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+<td>____</td>
+</tr>
+</tbody>
+</table>
+<p>若只有其中一个接入网络失败，问题范围可能包含本地路由器、运营商路径或该网络与隧道的组合。若两种网络都在同一目标失败，则应增加另一个合法上传目标作对照，排除单一网站限制。</p>
+<p>测试文件不要包含密码、证件、工作资料或私人照片。排障只需要可丢弃的非敏感内容。</p>
+<h2 id="heading-2">第二步：固定网络，只换一个节点</h2>
+<p>在出现问题的接入网络下，保留其他条件，只切换一个候选节点，再重复相同文件和目标。不要同时更换客户端模式、DNS、浏览器和节点，否则无法判断哪项变化带来差异。</p>
+<p>如果节点 A 反复失败，节点 B 在相同条件下完成，可以把测试时间、节点名称、目标和错误信息提交给服务方。这说明路径差异值得调查，但仍不能单凭一次成功就断言节点 A 的 MTU 一定配置错误。</p>
+<p>如果所有节点都失败，而关闭客户端后目标网站可以正常上传，下一步应检查客户端接管方式和隧道设置。可先阅读<a href="/posts/rule-global-tun-explained/">规则、全局与 TUN 的区别</a>，确认流量是否真的经过你认为的路径。</p>
+<h2 id="heading-3">第三步：检查客户端记录和报错</h2>
+<p>查看客户端在上传失败时间附近是否出现连接重置、超时、反复重连或握手失败。不同客户端记录的字段不同，不要为了套教程而编造不存在的状态。</p>
+<p>向服务方或客户端维护者反馈时，建议提供：</p>
+<ol>
+<li>操作系统和客户端名称、版本；</li>
+<li>使用系统代理还是 TUN 等接管方式；</li>
+<li>接入网络类型和测试时间；</li>
+<li>哪个节点、哪个目标、什么大小的测试文件；</li>
+<li>小文件是否成功、较大文件从何处失败；</li>
+<li>已去除订阅链接、令牌和个人信息的错误记录。</li>
+</ol>
+<p>订阅链接相当于个人访问凭据，截图和日志中若含完整链接，应先遮盖。不要把订阅地址粘贴到不明的在线诊断网站。</p>
+<h2 id="-mtu">第四步：是否应该直接修改 MTU？</h2>
+<p>普通用户不应把修改 MTU 当作第一步。错误的数值可能让其他网站或应用出现新的问题，而且系统网卡、虚拟网卡、客户端和路由器可能分别存在相关设置。</p>
+<p>更稳妥的处理顺序是：</p>
+<ol>
+<li>先用网络、节点和目标对照确认问题可复现；</li>
+<li>查看客户端官方文档是否提供 MTU、路径 MTU 探测或兼容性选项；</li>
+<li>向服务方核实该客户端与节点的推荐设置；</li>
+<li>修改前记录原值，一次只改一项；</li>
+<li>修改后同时复测上传、普通网页、下载和实时应用；</li>
+<li>无改善时恢复原值，不把低数值长期保留为“万能优化”。</li>
+</ol>
+<p>Cloudflare One 的客户端文档也说明，某些网络的 MTU 可能低于隧道默认数据包大小，路径 MTU 不匹配可能导致分片、丢包、连接不稳定或失败；其解决思路是探测路径并动态调整，而不是让所有用户固定使用同一个数值。<a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/">来源：Cloudflare 路径 MTU 探测说明</a></p>
+<p>本文引用的是通用网络原理和特定产品文档，不代表你的机场客户端具备相同功能。实际选项应以所用客户端的官方说明为准。</p>
+<h2 id="heading-4">选机场时怎样把上传纳入测试？</h2>
+<p>如果你经常上传工作附件、云端备份、视频素材或照片，机场推荐不能只看下载峰值。试用阶段至少完成一次与你日常用途相近的上传，并在常用网络、常用时段复查。</p>
+<p>选购记录可以包含：</p>
+<ul>
+<li>是否能在自己的设备上完成上传；</li>
+<li>失败时能否找到明确的客户端记录；</li>
+<li>服务方能否说明兼容方式和限制；</li>
+<li>切换节点后是否需要频繁人工干预；</li>
+<li>套餐流量是否同时计算上传和下载，以及倍率规则如何说明。</li>
+</ul>
+<p>关于流量计算，可继续阅读<a href="/posts/traffic-multiplier-calculation/">机场流量倍率怎么算</a>。如果问题伴随域名解析错误，则先按<a href="/posts/dns-node-website-separation/">机场 DNS 报错排查</a>区分节点域名与网站域名。</p>
+<h2 id="flybit--99">FlyBit 与 99吧注册入口</h2>
+<p>需要进一步了解本站整理的候选，可从以下推广入口进入：</p>
+<ul>
+<li><a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit 邀请注册入口</a>，邀请码：<strong>gPinVG8C</strong>。</li>
+<li><a href="https://99ba.net/#/register?code=sExBbdk9">99吧邀请注册入口</a>，邀请码：<strong>sExBbdk9</strong>。</li>
+</ul>
+<p>**推广说明：**经上述链接注册或购买，推荐方可能获得奖励。本站没有以本文方法实测两家服务的上传表现，也没有确认其当前价格、试用额度、MTU 设置或退款条件。邀请码不等于优惠承诺，购买前请核对服务方当前页面和账户内条款。已有可用服务的读者可以直接用本文方法测试现有方案，无需为了排障先购买新套餐。</p>
+<h2 id="heading-5">常见问题</h2>
+<h3 id="-mtu-">降低 MTU 后上传恢复，能证明是机场的问题吗？</h3>
+<p>它能说明数据包大小与当前路径表现有关，但不能单独确定责任在机场、接入网络、客户端还是目标服务。恢复原值与再次测试有助于确认变化是否可重复。</p>
+<h3 id="heading-6">为什么小文件成功，大文件才失败？</h3>
+<p>小文件成功可能只是没有触发相同的数据包、持续连接或服务端处理条件。MTU 是一种可能，也要同时考虑目标网站的大小限制、超时、账号权限和浏览器问题。</p>
+<h3 id="-mtu--1">要不要把 MTU 调得越低越好？</h3>
+<p>不建议。过低的数值会增加额外开销，也可能降低效率。应根据可复现证据、客户端文档和服务方建议调整，并保留原值方便恢复。</p>
+<p>资料核对日期：2026 年 9 月 22 日。本文提供通用排查与选购方法，不构成对任何服务商上传性能的实测排名。</p>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/airport-guide/"># 机场推荐</a><a href="https://kkjichang.cc/tags/routing/"># 代理分流</a><a href="https://kkjichang.cc/tags/network-test/"># 网络测速</a><a href="https://kkjichang.cc/tags/troubleshooting/"># 故障排查</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://kkjichang.cc/posts/airport-video-meeting-udp-check/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+
+<div class="article-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先判断是不是“只有上传失败”</a><a class="level-2" href="#mtu-">MTU 为什么会影响隧道里的上传？</a><a class="level-2" href="#heading-1">第一步：固定目标，做两种网络对照</a><a class="level-2" href="#heading-2">第二步：固定网络，只换一个节点</a><a class="level-2" href="#heading-3">第三步：检查客户端记录和报错</a><a class="level-2" href="#-mtu">第四步：是否应该直接修改 MTU？</a><a class="level-2" href="#heading-4">选机场时怎样把上传纳入测试？</a><a class="level-2" href="#flybit--99">FlyBit 与 99吧注册入口</a><a class="level-2" href="#heading-5">常见问题</a><a class="level-3" href="#-mtu-">降低 MTU 后上传恢复，能证明是机场的问题吗？</a><a class="level-3" href="#heading-6">为什么小文件成功，大文件才失败？</a><a class="level-3" href="#-mtu--1">要不要把 MTU 调得越低越好？</a></nav></aside>
+<aside class="ad-slot" aria-label="内容页侧边广告" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
+<span class="ad-badge">广告 <span aria-hidden="true">↗</span></span>
+
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<p>邀请码：<strong>gPinVG8C</strong></p>
+<p><strong>查看注册入口 →</strong></p>
+<p>推广链接 · 资格与费用以服务方页面为准</p>
+</div>
+</a><a class="ad-card" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（广告，在新标签页打开）" data-ad-link>
+<span class="ad-badge">广告 <span aria-hidden="true">↗</span></span>
+
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<p>邀请码：<strong>sExBbdk9</strong></p>
+<p><strong>查看注册入口 →</strong></p>
+<p>推广链接 · 资格与费用以服务方页面为准</p>
+</div>
+</a></aside></div>
+
+</main>
+</div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+
+<footer class="site-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://pyjichang.cc/" target="_blank" rel="noopener noreferrer">便宜机场推荐</a><a href="https://www.yaoyaolingxian.blog/" target="_blank" rel="noopener noreferrer">遥遥领先</a><a href="https://wdjichang.cc/" target="_blank" rel="noopener noreferrer">稳定机场推荐</a><a href="https://fengyy.org/" target="_blank" rel="noopener noreferrer">风悠悠</a><a href="https://zjtf.org/" target="_blank" rel="noopener noreferrer">酌酒听风</a></nav>
+<span>© 2026可靠机场推荐</span>
+</footer>
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://kkjichang.cc/pagefind/pagefind-component-ui.js" data-stylesheet="https://kkjichang.cc/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://kkjichang.cc/pagefind/" base-url="https://kkjichang.cc/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/291868d1-4b11-438f-a7a9-1c362faa8c17/","pageTitle":"机场打开网页正常但上传失败？MTU 与分片排查指南","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+
+</body></html>
+
+
