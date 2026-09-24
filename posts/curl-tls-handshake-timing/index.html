@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>机场 DNS 报错先查什么？把节点域名和网站域名分开 · 可靠机场推荐</title>
-<meta name="description" content="代理 DNS 故障先分清节点服务器解析、目标网站解析和客户端处理方式；按错误位置核对配置，避免同时替换所有 DNS。">
-<meta name="keywords" content="机场DNS报错,节点域名解析,Fake-IP">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/dns-node-website-separation/">
-<meta property="og:title" content="机场 DNS 报错先查什么？把节点域名和网站域名分开">
-<meta property="og:description" content="代理 DNS 故障先分清节点服务器解析、目标网站解析和客户端处理方式；按错误位置核对配置，避免同时替换所有 DNS。">
-<meta property="og:url" content="https://kkjichang.cc/posts/dns-node-website-separation/">
+<title>机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段 · 可靠机场推荐</title>
+<meta name="description" content="机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。">
+<meta name="keywords" content="机场试用,TLS握手耗时,curl计时">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/curl-tls-handshake-timing/">
+<meta property="og:title" content="机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段">
+<meta property="og:description" content="机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。">
+<meta property="og:url" content="https://kkjichang.cc/posts/curl-tls-handshake-timing/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="可靠机场推荐">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png"><meta property="og:image:alt" content="可靠机场推荐">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机场 DNS 报错先查什么？把节点域名和网站域名分开">
-<meta name="twitter:description" content="代理 DNS 故障先分清节点服务器解析、目标网站解析和客户端处理方式；按错误位置核对配置，避免同时替换所有 DNS。">
+<meta name="twitter:title" content="机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段">
+<meta name="twitter:description" content="机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。">
 <meta name="twitter:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-21T23:28:41&#43;08:00"><meta property="article:modified_time" content="2026-09-21T23:44:29&#43;08:00"><meta property="article:tag" content="代理分流"><meta property="article:tag" content="DNS"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/dns-node-website-separation/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-21T23:44:29+08:00","datePublished":"2026-09-21T23:28:41+08:00","description":"代理 DNS 故障先分清节点服务器解析、目标网站解析和客户端处理方式；按错误位置核对配置，避免同时替换所有 DNS。","headline":"机场 DNS 报错先查什么？把节点域名和网站域名分开","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/dns-node-website-separation/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/dns-node-website-separation/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/dns-node-website-separation/","name":"机场 DNS 报错先查什么？把节点域名和网站域名分开","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-24T10:23:00&#43;08:00"><meta property="article:modified_time" content="2026-09-24T10:24:47&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/curl-tls-handshake-timing/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-24T10:24:47+08:00","datePublished":"2026-09-24T10:23:00+08:00","description":"机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。","headline":"机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/curl-tls-handshake-timing/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/curl-tls-handshake-timing/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/curl-tls-handshake-timing/","name":"机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://kkjichang.cc/assets/theme/style.css">
@@ -74,71 +74,39 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="shell article-shell">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场 DNS 报错先查什么？把节点域名和网站域名分开</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段</span></li></ol></nav>
 
 
 
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>阅读时光</div>
-<h1 data-pagefind-meta="title">机场 DNS 报错先查什么？把节点域名和网站域名分开</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-21T23:28:41&#43;08:00">2026-09-21</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-24T10:23:00&#43;08:00">2026-09-24</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a></div>
 </header>
-<div class="prose"><blockquote>
-<p>本文含推广链接，相关信息与选购建议供你核对；未进行付费套餐实测。</p>
-</blockquote>
-<p>看到“解析失败”就把所有 DNS 改成同一个地址，可能让问题更难定位。代理连接至少会遇到两个不同的名字：你要连接的节点服务器，以及最终访问的网站。先知道哪一步失败，再看对应配置。</p>
-<h2 id="heading">两个名字对应两种任务</h2>
-<p>节点服务器的域名需要先解析，客户端才可能与它建立连接。目标网站的域名则属于后续访问任务，其解析可能由客户端、系统或其他组件参与。具体路径取决于所使用的软件与配置，不能只看系统 DNS 一处。</p>
-<p>mihomo 官方 DNS 文档提供普通解析、代理服务器解析及不同处理模式等配置项，说明这些职责可以分开设置。本文不提供适用于所有订阅的一键参数。</p>
-<h2 id="heading-1">从错误文字开始分类</h2>
-<table>
-<thead>
-<tr>
-<th>观察到的现象</th>
-<th>首先核对</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>节点服务器域名无法解析</td>
-<td>节点信息、配置中的服务器解析方式</td>
-</tr>
-<tr>
-<td>节点已连接，某网站解析失败</td>
-<td>目标域名相关解析与分流记录</td>
-</tr>
-<tr>
-<td>浏览器失败，其他应用正常</td>
-<td>浏览器独立 DNS 或代理设置</td>
-</tr>
-<tr>
-<td>改配置后全面异常</td>
-<td>恢复原配置，再逐项比较</td>
-</tr>
-</tbody>
-</table>
-<p>日志中显示的测试地址也可能不是你当前访问的网站。记录完整错误类型与发生时间，但不要公开其中的订阅凭据。</p>
-<h2 id="fake-ip-">Fake-IP 为什么不能只凭地址判错</h2>
-<p>mihomo 文档列出 fake-ip 与 redir-host 两种处理模式。采用 Fake-IP 时出现用于映射的地址，并不能仅凭“不是目标网站真实地址”就判定故障。是否正常，需要结合配置模式和实际请求结果来检查。</p>
-<h2 id="heading-2">给新手的四步顺序</h2>
-<p>先保存原配置；复现一个具体失败任务；定位报错涉及的域名与组件；再按照所用客户端的官方说明改动最小的一项。修改后重复同一任务，并确认原来正常的访问没有被破坏。</p>
-<p>如果自己无法解释配置，应把脱敏后的错误与版本信息发给服务方支持，而不是复制一大段不明来源的 DNS 模板。选机场时，清楚的配置说明与可用的支持渠道，也是值得核对的条件。</p>
-<h2 id="heading-3">参考与核对</h2>
+<div class="prose"><p>机场试用时，网页首屏慢不一定是下载带宽不足。DNS、连接代理、TCP握手、TLS握手和服务器响应都会占用时间。用curl拆分这些阶段，可以判断慢主要发生在连接前、握手中还是等待首字节时，再决定是否换节点。</p>
+<h2 id="heading">用同一目标采集时间字段</h2>
+<p><a href="https://curl.se/docs/manpage.html">curl 官方手册</a>的<code>--write-out</code>支持输出多个计时变量：<code>time_namelookup</code>是名称解析完成时间，<code>time_connect</code>到TCP连接完成，<code>time_appconnect</code>到TLS握手完成，<code>time_starttransfer</code>到收到首字节，<code>time_total</code>是总时长。</p>
+<p>Windows可用下面的只读请求，目标换成你实际常用且允许访问的HTTPS页面：</p>
+<pre><code class="language-powershell">curl.exe --output NUL --silent --show-error --location --connect-timeout 10 --write-out &quot;dns=%{time_namelookup}s connect=%{time_connect}s tls=%{time_appconnect}s first=%{time_starttransfer}s total=%{time_total}s`n&quot; https://example.com/
+</code></pre>
+<p>其他系统把<code>NUL</code>改为<code>/dev/null</code>，换行写法也会因终端不同而变化。先运行<code>curl --version</code>确认本机工具，再保留原始输出。</p>
+<h2 id="heading-1">看差值，不把累计值当单段耗时</h2>
+<p>这些时间多为从请求开始累计的时间。粗略观察某一阶段，应计算相邻字段差值：</p>
 <ul>
-<li><a href="https://wiki.metacubex.one/config/dns/">mihomo：DNS 配置</a></li>
+<li>TCP连接阶段约为<code>time_connect - time_namelookup</code>；</li>
+<li>TLS阶段约为<code>time_appconnect - time_connect</code>；</li>
+<li>等待首字节阶段约为<code>time_starttransfer - time_appconnect</code>；</li>
+<li>首字节后的传输约为<code>time_total - time_starttransfer</code>。</li>
 </ul>
-<p>资料核对日期：2026-09-21。</p>
-<h2 id="heading-4">试用与注册入口</h2>
-<p>有意进一步了解，可使用本站提供的推广入口：<a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit 注册入口</a>，邀请码 <strong>gPinVG8C</strong>；<a href="https://99ba.net/#/register?code=sExBbdk9">99吧注册入口</a>，邀请码 <strong>sExBbdk9</strong>。若链接先打开导航页，请从该页当前入口继续，并在注册表单核对邀请码是否保留。</p>
-<p>推广说明：经这些链接注册或购买，推荐方可能获得奖励；邀请码不等于优惠码，优惠与试用资格以服务方当前页面为准。</p>
-<h2 id="heading-5">继续阅读</h2>
-<ul>
-<li><a href="/posts/rule-global-tun-explained/">规则、全局与 TUN 是一回事吗？新手先分清接管与分流</a></li>
-<li><a href="/posts/auto-node-selection-target/">自动选择节点一定适合你吗？测试目标与真实网站的区别</a></li>
-<li><a href="/posts/connection-timeout-cross-check/">机场连接超时如何定位？用两台设备和两种网络做对照</a></li>
-</ul>
+<p>如果使用HTTP代理，<code>time_connect</code>可能反映到代理的连接；代理到目标和CONNECT隧道会影响后续阶段。字段能帮助分段，不能单独证明某个服务方负责。</p>
+<h2 id="heading-2">做三轮节点对照</h2>
+<p>固定设备、接入网络、代理模式和目标，在同一节点运行三次，记录中位数和是否失败；再只更换一个节点复测。不要一边跑下载测速、一边采集握手时间，也不要把不同网站的结果直接比较。</p>
+<p>TLS阶段持续明显增大时，结合客户端连接日志检查节点路径和握手错误；等待首字节阶段变长时，也可能与目标服务器负载或分流结果有关。只有一次异常，应在常用时段重复验证。</p>
+<h2 id="heading-3">把结果放回实际业务</h2>
+<p>最终再打开真实网页、视频或注册页面，确认所选节点在实际场景中可用。curl成功不代表浏览器扩展、TUN模式或所有应用都走同一路径。</p>
+<p>如果你尚未注册，可使用本站已披露的两个推广入口：<a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit注册链接</a>（邀请码<code>gPinVG8C</code>）或<a href="https://99ba.net/#/register?code=sExBbdk9">99吧注册链接</a>（邀请码<code>sExBbdk9</code>）。这些是推广链接，邀请码不等同于优惠承诺；注册后仍应按自己的网络、时段和业务做上述验收。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -146,13 +114,13 @@
 <span id="page-like-label">点赞</span><span id="page-like-count">—</span>
 </button><p id="page-like-message" role="status"></p>
 </div>
-<div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/routing/"># 代理分流</a><a href="https://kkjichang.cc/tags/dns/"># DNS</a><a href="https://kkjichang.cc/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/subscription-status-errors/">← 上一篇</a><a href="https://kkjichang.cc/posts/fast-test-video-buffering/">下一篇 →</a></nav>
+<div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/trial-evaluation/"># 试用评估</a><a href="https://kkjichang.cc/tags/network-test/"># 网络测速</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://kkjichang.cc/posts/airport-subscription-migration-check/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">两个名字对应两种任务</a><a class="level-2" href="#heading-1">从错误文字开始分类</a><a class="level-2" href="#fake-ip-">Fake-IP 为什么不能只凭地址判错</a><a class="level-2" href="#heading-2">给新手的四步顺序</a><a class="level-2" href="#heading-3">参考与核对</a><a class="level-2" href="#heading-4">试用与注册入口</a><a class="level-2" href="#heading-5">继续阅读</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">用同一目标采集时间字段</a><a class="level-2" href="#heading-1">看差值，不把累计值当单段耗时</a><a class="level-2" href="#heading-2">做三轮节点对照</a><a class="level-2" href="#heading-3">把结果放回实际业务</a></nav></aside>
 <aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
@@ -201,7 +169,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/a9c5a9da-8398-4e21-82bc-9ac03020be71/","pageTitle":"机场 DNS 报错先查什么？把节点域名和网站域名分开","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/00b5a1bb-0041-40be-9596-7cdd459b45fc/","pageTitle":"机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
 
 </body></html>
 
