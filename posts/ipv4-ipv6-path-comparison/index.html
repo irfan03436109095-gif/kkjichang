@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段 · 可靠机场推荐</title>
-<meta name="description" content="机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。">
-<meta name="keywords" content="机场试用,TLS握手耗时,curl计时">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/curl-tls-handshake-timing/">
-<meta property="og:title" content="机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段">
-<meta property="og:description" content="机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。">
-<meta property="og:url" content="https://kkjichang.cc/posts/curl-tls-handshake-timing/">
+<title>IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径 · 可靠机场推荐</title>
+<meta name="description" content="机场节点偶发连接慢怎么查？用curl -4和-6做IPv4、IPv6单变量对照，区分本地路径、接管和节点问题。">
+<meta name="keywords" content="IPv4 IPv6测试,curl -4 -6,机场试用,网络路径">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/">
+<meta property="og:title" content="IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径">
+<meta property="og:description" content="机场节点偶发连接慢怎么查？用curl -4和-6做IPv4、IPv6单变量对照，区分本地路径、接管和节点问题。">
+<meta property="og:url" content="https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="可靠机场推荐">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png"><meta property="og:image:alt" content="可靠机场推荐">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段">
-<meta name="twitter:description" content="机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。">
+<meta name="twitter:title" content="IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径">
+<meta name="twitter:description" content="机场节点偶发连接慢怎么查？用curl -4和-6做IPv4、IPv6单变量对照，区分本地路径、接管和节点问题。">
 <meta name="twitter:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-24T10:23:00&#43;08:00"><meta property="article:modified_time" content="2026-09-24T10:24:47&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/curl-tls-handshake-timing/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-24T10:24:47+08:00","datePublished":"2026-09-24T10:23:00+08:00","description":"机场节点网页首屏慢怎么判断？用curl time_connect、time_appconnect和time_starttransfer拆分连接阶段，减少误判。","headline":"机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/curl-tls-handshake-timing/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/curl-tls-handshake-timing/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/curl-tls-handshake-timing/","name":"机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-25T09:10:21&#43;08:00"><meta property="article:modified_time" content="2026-09-25T09:11:18&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-25T09:11:18+08:00","datePublished":"2026-09-25T09:10:21+08:00","description":"机场节点偶发连接慢怎么查？用curl -4和-6做IPv4、IPv6单变量对照，区分本地路径、接管和节点问题。","headline":"IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/","name":"IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://kkjichang.cc/assets/theme/style.css">
@@ -74,39 +74,43 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="shell article-shell">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径</span></li></ol></nav>
 
 
 
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>阅读时光</div>
-<h1 data-pagefind-meta="title">机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-24T10:23:00&#43;08:00">2026-09-24</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-25T09:10:21&#43;08:00">2026-09-25</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a></div>
 </header>
-<div class="prose"><p>机场试用时，网页首屏慢不一定是下载带宽不足。DNS、连接代理、TCP握手、TLS握手和服务器响应都会占用时间。用curl拆分这些阶段，可以判断慢主要发生在连接前、握手中还是等待首字节时，再决定是否换节点。</p>
-<h2 id="heading">用同一目标采集时间字段</h2>
-<p><a href="https://curl.se/docs/manpage.html">curl 官方手册</a>的<code>--write-out</code>支持输出多个计时变量：<code>time_namelookup</code>是名称解析完成时间，<code>time_connect</code>到TCP连接完成，<code>time_appconnect</code>到TLS握手完成，<code>time_starttransfer</code>到收到首字节，<code>time_total</code>是总时长。</p>
-<p>Windows可用下面的只读请求，目标换成你实际常用且允许访问的HTTPS页面：</p>
-<pre><code class="language-powershell">curl.exe --output NUL --silent --show-error --location --connect-timeout 10 --write-out &quot;dns=%{time_namelookup}s connect=%{time_connect}s tls=%{time_appconnect}s first=%{time_starttransfer}s total=%{time_total}s`n&quot; https://example.com/
+<div class="prose"><p>同一个机场节点有时网页秒开，有时却在连接阶段停很久，可能与本地 IPv4、IPv6 路径差异有关。判断前先做单变量对照：使用同一设备、同一目标和相近时间，分别强制 IPv4 与 IPv6，看看问题是否只出现在其中一条地址族路径。</p>
+<h2 id="heading">先检查目标是否支持双栈</h2>
+<p>选择自己有权测试、长期稳定的 HTTPS 站点。在终端分别执行：</p>
+<pre><code class="language-text">curl -4 -I --connect-timeout 10 https://目标域名/
+curl -6 -I --connect-timeout 10 https://目标域名/
 </code></pre>
-<p>其他系统把<code>NUL</code>改为<code>/dev/null</code>，换行写法也会因终端不同而变化。先运行<code>curl --version</code>确认本机工具，再保留原始输出。</p>
-<h2 id="heading-1">看差值，不把累计值当单段耗时</h2>
-<p>这些时间多为从请求开始累计的时间。粗略观察某一阶段，应计算相邻字段差值：</p>
+<p>curl 官方手册说明，<code>-4</code> 只请求 IPv4 地址，<code>-6</code> 只请求 IPv6 地址，两者互斥。若目标根本没有 IPv6 地址，<code>-6</code> 失败属于能力差异，不能据此判定机场节点故障。</p>
+<h2 id="heading-1">记录连接阶段而不是只看成功失败</h2>
+<p>可以在两条命令后加入统一的 <code>--write-out</code> 字段，记录解析、连接、TLS、首字节和总耗时。连续做三轮，小间隔执行，避免一次偶发抖动主导结论。</p>
+<p>建议表格包含：时间、IPv4/IPv6、解析结果、连接是否成功、HTTP 状态、总耗时、是否通过机场客户端。不要同时切换节点、接入网络和目标网站，否则无法知道是哪一个变量起作用。</p>
+<h2 id="heading-2">结果如何解释</h2>
 <ul>
-<li>TCP连接阶段约为<code>time_connect - time_namelookup</code>；</li>
-<li>TLS阶段约为<code>time_appconnect - time_connect</code>；</li>
-<li>等待首字节阶段约为<code>time_starttransfer - time_appconnect</code>；</li>
-<li>首字节后的传输约为<code>time_total - time_starttransfer</code>。</li>
+<li>IPv4、IPv6 都稳定：问题更可能在应用分流、目标服务或节点负载。</li>
+<li>只有 IPv6 失败：检查本地网络是否真正提供 IPv6、客户端是否接管 IPv6、规则是否允许对应流量。</li>
+<li>只有 IPv4 失败：核对 IPv4 地址、默认路由和本地防火墙，不要因为 IPv6 可用就忽略。</li>
+<li>两者都失败：先验证直连和本地代理端口，再检查订阅与节点状态。</li>
 </ul>
-<p>如果使用HTTP代理，<code>time_connect</code>可能反映到代理的连接；代理到目标和CONNECT隧道会影响后续阶段。字段能帮助分段，不能单独证明某个服务方负责。</p>
-<h2 id="heading-2">做三轮节点对照</h2>
-<p>固定设备、接入网络、代理模式和目标，在同一节点运行三次，记录中位数和是否失败；再只更换一个节点复测。不要一边跑下载测速、一边采集握手时间，也不要把不同网站的结果直接比较。</p>
-<p>TLS阶段持续明显增大时，结合客户端连接日志检查节点路径和握手错误；等待首字节阶段变长时，也可能与目标服务器负载或分流结果有关。只有一次异常，应在常用时段重复验证。</p>
-<h2 id="heading-3">把结果放回实际业务</h2>
-<p>最终再打开真实网页、视频或注册页面，确认所选节点在实际场景中可用。curl成功不代表浏览器扩展、TUN模式或所有应用都走同一路径。</p>
-<p>如果你尚未注册，可使用本站已披露的两个推广入口：<a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit注册链接</a>（邀请码<code>gPinVG8C</code>）或<a href="https://99ba.net/#/register?code=sExBbdk9">99吧注册链接</a>（邀请码<code>sExBbdk9</code>）。这些是推广链接，邀请码不等同于优惠承诺；注册后仍应按自己的网络、时段和业务做上述验收。</p>
+<p>浏览器和操作系统可能使用类似 Happy Eyeballs 的并行或回退策略，所以日常体验未必等于强制 <code>-4</code> 或 <code>-6</code> 的结果。强制测试的价值是隔离变量，不是替代真实应用验收。</p>
+<h2 id="heading-3">用于机场试用的验收标准</h2>
+<p>在直连与候选节点下各做一组，再完成一次真实网页或视频会议任务。如果某一地址族反复超时，但另一地址族和真实任务稳定，可以先记录为兼容性限制；若两条路径都在晚高峰明显恶化，再把它纳入机场推荐的稳定性判断。</p>
+<p>需要注册试用时，可从本站已披露的推广入口进入：<a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit 注册入口</a> 或 <a href="https://99ba.net/#/register?code=sExBbdk9">99吧注册入口</a>。这些是推广链接，邀请码不代表价格优惠或服务承诺；请以服务商页面的实时条款为准。</p>
+<h2 id="heading-4">参考资料</h2>
+<ul>
+<li><a href="https://curl.se/docs/manpage.html">curl 命令行手册：--ipv4 与 --ipv6</a></li>
+<li><a href="https://curl.se/docs/tutorial.html#IPv6">curl 官方教程：IPv6</a></li>
+</ul>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -115,12 +119,12 @@
 </button><p id="page-like-message" role="status"></p>
 </div>
 <div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/trial-evaluation/"># 试用评估</a><a href="https://kkjichang.cc/tags/network-test/"># 网络测速</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/">← 上一篇</a><a href="https://kkjichang.cc/posts/airport-subscription-migration-check/">下一篇 →</a></nav>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://kkjichang.cc/posts/curl-tls-handshake-timing/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">用同一目标采集时间字段</a><a class="level-2" href="#heading-1">看差值，不把累计值当单段耗时</a><a class="level-2" href="#heading-2">做三轮节点对照</a><a class="level-2" href="#heading-3">把结果放回实际业务</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先检查目标是否支持双栈</a><a class="level-2" href="#heading-1">记录连接阶段而不是只看成功失败</a><a class="level-2" href="#heading-2">结果如何解释</a><a class="level-2" href="#heading-3">用于机场试用的验收标准</a><a class="level-2" href="#heading-4">参考资料</a></nav></aside>
 <aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
@@ -169,7 +173,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/00b5a1bb-0041-40be-9596-7cdd459b45fc/","pageTitle":"机场试用怎样看 TLS 握手耗时？用 curl 拆分连接阶段","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/b0184ae1-d62e-4fe8-aff3-342f760d7f8f/","pageTitle":"IPv4 能用、IPv6 超时？用 curl -4/-6 比较机场路径","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
 
 </body></html>
 
