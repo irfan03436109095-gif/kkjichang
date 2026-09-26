@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kkjichang.cc/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/categories/client-start/</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/categories/network-quality/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/categories/plans-budget/</loc>
@@ -26,11 +26,11 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/page/2/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/page/3/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/99ba-invite-trial/</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/airport-recommendation-start/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/airport-registration-email-check/</loc>
@@ -71,6 +71,10 @@
   <url>
     <loc>https://kkjichang.cc/posts/connection-timeout-cross-check/</loc>
     <lastmod>2026-09-24T02:25:13Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kkjichang.cc/posts/curl-connect-total-timeout/</loc>
+    <lastmod>2026-09-26T01:07:05Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/curl-tls-handshake-timing/</loc>
@@ -106,7 +110,7 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/ipv4-ipv6-path-comparison/</loc>
-    <lastmod>2026-09-25T01:11:18Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/multi-device-plan-check/</loc>
@@ -170,7 +174,7 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/network-test/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/plan-selection/</loc>
@@ -190,19 +194,19 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/trial-evaluation/</loc>
-    <lastmod>2026-09-25T01:54:21Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/trial-evaluation/page/2/</loc>
-    <lastmod>2026-09-25T01:11:18Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/troubleshooting/</loc>
-    <lastmod>2026-09-24T02:24:47Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/troubleshooting/page/2/</loc>
-    <lastmod>2026-09-24T02:24:47Z</lastmod>
+    <lastmod>2026-09-26T11:19:20Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/tags/v2rayn/</loc>
