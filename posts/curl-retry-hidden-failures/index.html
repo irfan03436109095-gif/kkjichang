@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>机场试用会“卡住但不超时”？用 curl 检测持续低速 · 可靠机场推荐</title>
-<meta name="description" content="机场试用下载卡住但不超时怎么办？用curl检测持续低速，记录退出码、平均速度和对照结果，判断节点稳定性。">
-<meta name="keywords" content="机场试用,curl speed-limit,持续低速,可靠机场推荐">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/curl-low-speed-stall-test/">
-<meta property="og:title" content="机场试用会“卡住但不超时”？用 curl 检测持续低速">
-<meta property="og:description" content="机场试用下载卡住但不超时怎么办？用curl检测持续低速，记录退出码、平均速度和对照结果，判断节点稳定性。">
-<meta property="og:url" content="https://kkjichang.cc/posts/curl-low-speed-stall-test/">
+<title>机场试用开了自动重试还算稳定吗？把重试次数单独记 · 可靠机场推荐</title>
+<meta name="description" content="机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。">
+<meta name="keywords" content="机场试用,curl retry,自动重试,节点稳定性,可靠机场推荐">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/curl-retry-hidden-failures/">
+<meta property="og:title" content="机场试用开了自动重试还算稳定吗？把重试次数单独记">
+<meta property="og:description" content="机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。">
+<meta property="og:url" content="https://kkjichang.cc/posts/curl-retry-hidden-failures/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="可靠机场推荐">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png"><meta property="og:image:alt" content="可靠机场推荐">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机场试用会“卡住但不超时”？用 curl 检测持续低速">
-<meta name="twitter:description" content="机场试用下载卡住但不超时怎么办？用curl检测持续低速，记录退出码、平均速度和对照结果，判断节点稳定性。">
+<meta name="twitter:title" content="机场试用开了自动重试还算稳定吗？把重试次数单独记">
+<meta name="twitter:description" content="机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。">
 <meta name="twitter:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-27T09:07:08&#43;08:00"><meta property="article:modified_time" content="2026-09-27T09:07:22&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/curl-low-speed-stall-test/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-27T09:07:22+08:00","datePublished":"2026-09-27T09:07:08+08:00","description":"机场试用下载卡住但不超时怎么办？用curl检测持续低速，记录退出码、平均速度和对照结果，判断节点稳定性。","headline":"机场试用会“卡住但不超时”？用 curl 检测持续低速","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/curl-low-speed-stall-test/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/curl-low-speed-stall-test/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/curl-low-speed-stall-test/","name":"机场试用会“卡住但不超时”？用 curl 检测持续低速","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-28T09:07:19&#43;08:00"><meta property="article:modified_time" content="2026-09-28T09:07:41&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速"><meta property="article:tag" content="故障排查">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/curl-retry-hidden-failures/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-28T09:07:41+08:00","datePublished":"2026-09-28T09:07:19+08:00","description":"机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。","headline":"机场试用开了自动重试还算稳定吗？把重试次数单独记","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/curl-retry-hidden-failures/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/curl-retry-hidden-failures/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/curl-retry-hidden-failures/","name":"机场试用开了自动重试还算稳定吗？把重试次数单独记","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://kkjichang.cc/assets/theme/style.css">
@@ -74,39 +74,43 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="shell article-shell">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场试用会“卡住但不超时”？用 curl 检测持续低速</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场试用开了自动重试还算稳定吗？把重试次数单独记</span></li></ol></nav>
 
 
 
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>阅读时光</div>
-<h1 data-pagefind-meta="title">机场试用会“卡住但不超时”？用 curl 检测持续低速</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-27T09:07:08&#43;08:00">2026-09-27</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">机场试用开了自动重试还算稳定吗？把重试次数单独记</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-28T09:07:19&#43;08:00">2026-09-28</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a></div>
 </header>
-<div class="prose"><h2 id="-curl-">机场试用会“卡住但不超时”？用 curl 检测持续低速</h2>
-<p>有些节点能很快建立连接，却在下载过程中长时间几乎没有数据。只设置连接超时或总超时，往往只能在很久之后判定失败。curl 的 <code>--speed-limit</code> 与 <code>--speed-time</code> 可以表达另一种条件：如果传输速度持续低于阈值达到指定时间，就主动中止。</p>
-<h3 id="heading">两个参数怎样配合</h3>
-<ul>
-<li><code>--speed-limit</code>：最低可接受速度，单位是字节每秒。</li>
-<li><code>--speed-time</code>：速度低于阈值必须持续多久才中止。</li>
-</ul>
-<p>例如，在有权访问的固定测试文件上设置“连续 15 秒低于 50 KiB/s 就停止”：</p>
-<pre><code class="language-bash">curl -o NUL -sS --speed-limit 51200 --speed-time 15 \
-  --max-time 120 -w &quot;code=%{response_code} exit=%{exitcode} speed=%{speed_download}\n&quot; \
-  https://example.com/test.bin
+<div class="prose"><p>机场试用时给 curl 加上自动重试，最终下载成功，看起来像线路稳定；但第一次失败可能已经被重试掩盖。评估可靠性时，应分别记录“最终是否成功”和“为了成功重试了几次”。</p>
+<h2 id="heading">自动重试会改变你看到的结果</h2>
+<p>curl 官方手册说明，<code>--retry</code> 会对超时以及部分暂时性 HTTP 状态重试，默认次数为 0。重试前会等待，并逐步增加间隔；如果服务器返回 <code>Retry-After</code>，curl 可据此安排下一次尝试。</p>
+<p><code>--retry-all-errors</code> 会扩大重试范围，但官方把它称为力度很大的选项，并提醒可能产生重复发送或接收。机场试用不应默认对所有错误重试，更不能对下单、提交表单等有副作用的请求使用。</p>
+<h2 id="heading-1">先做不重试基线</h2>
+<p>使用自己有权访问的小文件或只读页面：</p>
+<pre><code class="language-bash">curl --max-time 20 --output NUL \
+  --write-out &quot;http=%{http_code} exit=%{exitcode} time=%{time_total}\n&quot; \
+  https://example.com/test
 </code></pre>
-<p>macOS 或 Linux 将 <code>NUL</code> 改为 <code>/dev/null</code>。<code>--max-time</code> 仍用于限制整次传输，避免测试无限等待。阈值要按自己的真实需求设置，不要照抄为服务商标准。</p>
-<h3 id="heading-1">先排除测试目标问题</h3>
-<p>固定设备、网络、文件和时段，先直连测试，再比较候选节点。如果所有路径都低速，目标服务器或本地接入可能是瓶颈；只有某一节点反复触发低速中止，证据才更接近该路径。</p>
-<p>同一文件可能有 CDN 缓存与地区路由差异。换一个同样授权、大小相近的目标复测，能减少单个服务器造成的误判。</p>
-<h3 id="heading-2">怎样记录结果</h3>
-<p>每个节点交替测试三次，记录：是否连接成功、是否触发低速条件、平均速度、总时间和退出码。不要只保留成功样本，也不要把一次短暂抖动写成长期不稳定。</p>
-<p>curl 官方说明，这组参数控制传输阶段的持续低速，不负责慢 DNS 或慢建连；连接阶段仍要结合 <code>--connect-timeout</code>。因此排查顺序可以是：先确认建连，再观察持续传输，最后用浏览器或视频会议等真实任务验收。</p>
-<h3 id="heading-3">试用与注册建议</h3>
-<p>可靠机场推荐应关注“能否持续完成任务”，而不只是峰值速度。注册前先核对试用限制和退款条款。本站授权的推广入口为 <a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit</a> 与 <a href="https://99ba.net/#/register?code=sExBbdk9">99吧</a>；链接含推广邀请码，不代表折扣、稳定性或退款承诺。</p>
-<p>来源：<a href="https://curl.se/docs/manpage.html">curl <code>--speed-limit</code> 与 <code>--speed-time</code> 官方手册</a>。</p>
+<p>交替测试直连和候选节点，每条路径做多轮，记录首次结果。然后再加入有限重试：</p>
+<pre><code class="language-bash">curl --retry 2 --retry-max-time 45 --max-time 20 \
+  --output NUL https://example.com/test
+</code></pre>
+<p>新版本 curl 的 <code>--write-out</code> 还可提供 <code>num_retries</code>，但不同设备版本不一定支持。先运行 <code>curl --version</code> 和本机帮助；不支持时，保留带时间戳的详细日志，人工统计尝试次数。</p>
+<h2 id="heading-2">怎样解读</h2>
+<ul>
+<li>不重试即可稳定成功：基线最好。</li>
+<li>首次常失败、重试后成功：可用性依赖恢复机制，交互任务仍可能卡顿。</li>
+<li>重试耗尽仍失败：继续区分 DNS、连接、TLS、HTTP 状态和持续低速。</li>
+<li>只在一个目标失败：可能是目标服务、分流或限流，不足以证明整个节点不可靠。</li>
+</ul>
+<p>不要同时改变节点、超时、重试次数和测试文件。一次只改一个变量，才能知道恢复来自哪里。</p>
+<h2 id="heading-3">试用与注册建议</h2>
+<p>可靠机场推荐应公开失败样本和重试口径。注册前先用只读任务比较候选线路，再核对试用、退款和节点倍率条款。本站授权的推广入口为 <a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit</a> 与 <a href="https://99ba.net/#/register?code=sExBbdk9">99吧</a>；链接含推广邀请码，不代表优惠、稳定性或退款承诺。</p>
+<p>来源：<a href="https://curl.se/docs/manpage.html">curl 官方手册：<code>--retry</code>、<code>--retry-max-time</code>、<code>--retry-all-errors</code> 与 <code>num_retries</code></a>。</p>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -115,12 +119,12 @@
 </button><p id="page-like-message" role="status"></p>
 </div>
 <div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/trial-evaluation/"># 试用评估</a><a href="https://kkjichang.cc/tags/network-test/"># 网络测速</a><a href="https://kkjichang.cc/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/curl-retry-hidden-failures/">← 上一篇</a><a href="https://kkjichang.cc/posts/curl-connect-total-timeout/">下一篇 →</a></nav>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://kkjichang.cc/posts/curl-low-speed-stall-test/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#-curl-">机场试用会“卡住但不超时”？用 curl 检测持续低速</a><a class="level-3" href="#heading">两个参数怎样配合</a><a class="level-3" href="#heading-1">先排除测试目标问题</a><a class="level-3" href="#heading-2">怎样记录结果</a><a class="level-3" href="#heading-3">试用与注册建议</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">自动重试会改变你看到的结果</a><a class="level-2" href="#heading-1">先做不重试基线</a><a class="level-2" href="#heading-2">怎样解读</a><a class="level-2" href="#heading-3">试用与注册建议</a></nav></aside>
 <aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
@@ -169,7 +173,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/d2df50c6-b0f5-497a-9d4f-c9b9cdbf339d/","pageTitle":"机场试用会“卡住但不超时”？用 curl 检测持续低速","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/056370b7-3b1d-4caa-8fce-99432431ced0/","pageTitle":"机场试用开了自动重试还算稳定吗？把重试次数单独记","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
 
 </body></html>
 
