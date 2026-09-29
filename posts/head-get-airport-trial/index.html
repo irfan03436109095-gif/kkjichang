@@ -4,23 +4,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>机场试用开了自动重试还算稳定吗？把重试次数单独记 · 可靠机场推荐</title>
-<meta name="description" content="机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。">
-<meta name="keywords" content="机场试用,curl retry,自动重试,节点稳定性,可靠机场推荐">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/curl-retry-hidden-failures/">
-<meta property="og:title" content="机场试用开了自动重试还算稳定吗？把重试次数单独记">
-<meta property="og:description" content="机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。">
-<meta property="og:url" content="https://kkjichang.cc/posts/curl-retry-hidden-failures/">
+<title>curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测 · 可靠机场推荐</title>
+<meta name="description" content="curl -I返回200就能证明机场节点可用吗？区分HEAD与GET，核对正文传输、字节数和真实请求结果。">
+<meta name="keywords" content="机场试用,HEAD请求,GET请求,curl -I,可靠机场推荐">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://kkjichang.cc/posts/head-get-airport-trial/">
+<meta property="og:title" content="curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测">
+<meta property="og:description" content="curl -I返回200就能证明机场节点可用吗？区分HEAD与GET，核对正文传输、字节数和真实请求结果。">
+<meta property="og:url" content="https://kkjichang.cc/posts/head-get-airport-trial/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="可靠机场推荐">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png"><meta property="og:image:alt" content="可靠机场推荐">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机场试用开了自动重试还算稳定吗？把重试次数单独记">
-<meta name="twitter:description" content="机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。">
+<meta name="twitter:title" content="curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测">
+<meta name="twitter:description" content="curl -I返回200就能证明机场节点可用吗？区分HEAD与GET，核对正文传输、字节数和真实请求结果。">
 <meta name="twitter:image" content="https://kkjichang.cc/assets/media/93ddb3b4-a9a5-4e25-a40d-f86d9c03d799.png">
-<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-28T09:07:19&#43;08:00"><meta property="article:modified_time" content="2026-09-28T09:07:41&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速"><meta property="article:tag" content="故障排查">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/curl-retry-hidden-failures/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-28T09:07:41+08:00","datePublished":"2026-09-28T09:07:19+08:00","description":"机场试用自动重试后成功算稳定吗？用curl分别记录首次失败、重试次数和最终结果，判断节点可靠性。","headline":"机场试用开了自动重试还算稳定吗？把重试次数单独记","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/curl-retry-hidden-failures/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/curl-retry-hidden-failures/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/curl-retry-hidden-failures/","name":"机场试用开了自动重试还算稳定吗？把重试次数单独记","position":2}]}]}</script>
+<meta name="author" content="王牌飞行员"><meta property="article:published_time" content="2026-09-29T09:08:02&#43;08:00"><meta property="article:modified_time" content="2026-09-29T09:08:33&#43;08:00"><meta property="article:tag" content="试用评估"><meta property="article:tag" content="网络测速"><meta property="article:tag" content="故障排查">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://kkjichang.cc/posts/head-get-airport-trial/#article","@type":"BlogPosting","author":{"@type":"Person","name":"王牌飞行员"},"dateModified":"2026-09-29T09:08:33+08:00","datePublished":"2026-09-29T09:08:02+08:00","description":"curl -I返回200就能证明机场节点可用吗？区分HEAD与GET，核对正文传输、字节数和真实请求结果。","headline":"curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://kkjichang.cc/posts/head-get-airport-trial/","@type":"WebPage"},"url":"https://kkjichang.cc/posts/head-get-airport-trial/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://kkjichang.cc/","name":"可靠机场推荐","position":1},{"@type":"ListItem","item":"https://kkjichang.cc/posts/head-get-airport-trial/","name":"curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测","position":2}]}]}</script>
 
 <script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
 <link rel="stylesheet" href="https://kkjichang.cc/assets/theme/style.css">
@@ -74,43 +74,45 @@
 <div class="article-viewport"><div class="article-scroll">
 <main id="main" tabindex="-1" class="shell article-shell">
 
-<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">机场试用开了自动重试还算稳定吗？把重试次数单独记</span></li></ol></nav>
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://kkjichang.cc/">可靠机场推荐</a></li><li><span aria-current="page">curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测</span></li></ol></nav>
 
 
 
 <article data-pagefind-body>
 <header class="article-header">
 <div class="eyebrow" data-pagefind-ignore>阅读时光</div>
-<h1 data-pagefind-meta="title">机场试用开了自动重试还算稳定吗？把重试次数单独记</h1>
-<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-28T09:07:19&#43;08:00">2026-09-28</time><span><span id="page-views">—</span> 次阅读</span></div>
+<h1 data-pagefind-meta="title">curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测</h1>
+<div class="metadata" data-pagefind-ignore><span>王牌飞行员</span><time datetime="2026-09-29T09:08:02&#43;08:00">2026-09-29</time><span><span id="page-views">—</span> 次阅读</span></div>
 <div class="chips" data-pagefind-ignore><a href="https://kkjichang.cc/categories/network-quality/">网络体验</a></div>
 </header>
-<div class="prose"><p>机场试用时给 curl 加上自动重试，最终下载成功，看起来像线路稳定；但第一次失败可能已经被重试掩盖。评估可靠性时，应分别记录“最终是否成功”和“为了成功重试了几次”。</p>
-<h2 id="heading">自动重试会改变你看到的结果</h2>
-<p>curl 官方手册说明，<code>--retry</code> 会对超时以及部分暂时性 HTTP 状态重试，默认次数为 0。重试前会等待，并逐步增加间隔；如果服务器返回 <code>Retry-After</code>，curl 可据此安排下一次尝试。</p>
-<p><code>--retry-all-errors</code> 会扩大重试范围，但官方把它称为力度很大的选项，并提醒可能产生重复发送或接收。机场试用不应默认对所有错误重试，更不能对下单、提交表单等有副作用的请求使用。</p>
-<h2 id="heading-1">先做不重试基线</h2>
-<p>使用自己有权访问的小文件或只读页面：</p>
-<pre><code class="language-bash">curl --max-time 20 --output NUL \
-  --write-out &quot;http=%{http_code} exit=%{exitcode} time=%{time_total}\n&quot; \
-  https://example.com/test
+<div class="prose"><p>用 <code>curl -I</code> 看到 200，不等于真实网页或下载一定可用。<code>-I</code> 发送的是 HEAD 请求，主要获取响应头，不传输正文；服务器、CDN 或代理对 HEAD 与 GET 的处理可能不同。</p>
+<h2 id="head-">HEAD 能证明什么</h2>
+<p>HTTP 规范把 HEAD 定义为与 GET 相同但不返回响应内容，服务端应尽量提供类似的响应头，也允许省略只有生成正文时才能确定的字段。因此，HEAD 成功只证明元数据请求成功，不能证明正文能完整传输、脚本资源能加载或长连接稳定。</p>
+<p>先用 HEAD 做低成本预检：</p>
+<pre><code class="language-powershell">curl.exe -I -sS -o NUL -w &quot;head=%{response_code} total=%{time_total}\n&quot; `
+  &quot;https://你有权测试的目标/&quot;
 </code></pre>
-<p>交替测试直连和候选节点，每条路径做多轮，记录首次结果。然后再加入有限重试：</p>
-<pre><code class="language-bash">curl --retry 2 --retry-max-time 45 --max-time 20 \
-  --output NUL https://example.com/test
+<p>随后对同一小页面做 GET，并丢弃正文：</p>
+<pre><code class="language-powershell">curl.exe -sS -o NUL `
+  -w &quot;get=%{response_code} type=%{content_type} bytes=%{size_download} total=%{time_total}\n&quot; `
+  &quot;https://你有权测试的目标/&quot;
 </code></pre>
-<p>新版本 curl 的 <code>--write-out</code> 还可提供 <code>num_retries</code>，但不同设备版本不一定支持。先运行 <code>curl --version</code> 和本机帮助；不支持时，保留带时间戳的详细日志，人工统计尝试次数。</p>
-<h2 id="heading-2">怎样解读</h2>
+<p>测试目标应是体积明确的小页面，避免为验证一个状态码消耗大量套餐流量。</p>
+<h2 id="heading">怎样解释差异</h2>
+<p>HEAD 为 200、GET 失败时，记录 GET 的状态码、退出码和客户端日志；这可能是目标站点规则、缓存层或正文传输问题。两者都成功但 GET 很慢，则继续比较首字节与下载阶段。不要把 HEAD 的耗时写成页面加载速度。</p>
+<p>机场试用应使用相同目标、相同网络和相近时间，对每个候选节点分别做一组 HEAD/GET。连续两轮都出现相同差异，结论才有参考价值。</p>
+<h2 id="heading-1">可选候选入口</h2>
+<p>以下为本站推广入口，注册可能为本站带来收益；邀请码不代表优惠、稳定性或退款承诺，请先核对实时套餐条款并做小额试用：</p>
 <ul>
-<li>不重试即可稳定成功：基线最好。</li>
-<li>首次常失败、重试后成功：可用性依赖恢复机制，交互任务仍可能卡顿。</li>
-<li>重试耗尽仍失败：继续区分 DNS、连接、TLS、HTTP 状态和持续低速。</li>
-<li>只在一个目标失败：可能是目标服务、分流或限流，不足以证明整个节点不可靠。</li>
+<li><a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit 注册入口（邀请码 gPinVG8C）</a></li>
+<li><a href="https://99ba.net/#/register?code=sExBbdk9">99吧注册入口（邀请码 sExBbdk9）</a></li>
 </ul>
-<p>不要同时改变节点、超时、重试次数和测试文件。一次只改一个变量，才能知道恢复来自哪里。</p>
-<h2 id="heading-3">试用与注册建议</h2>
-<p>可靠机场推荐应公开失败样本和重试口径。注册前先用只读任务比较候选线路，再核对试用、退款和节点倍率条款。本站授权的推广入口为 <a href="https://goflybit.com/#/register?code=gPinVG8C">FlyBit</a> 与 <a href="https://99ba.net/#/register?code=sExBbdk9">99吧</a>；链接含推广邀请码，不代表优惠、稳定性或退款承诺。</p>
-<p>来源：<a href="https://curl.se/docs/manpage.html">curl 官方手册：<code>--retry</code>、<code>--retry-max-time</code>、<code>--retry-all-errors</code> 与 <code>num_retries</code></a>。</p>
+<h2 id="heading-2">验收标准</h2>
+<p>记录中应同时存在 HEAD 和 GET 的状态、GET 实际字节数以及异常说明。只有 GET 正文可重复完成，才能把该目标记为通过。</p>
+<h2 id="heading-3">参考资料</h2>
+<ul>
+<li><a href="https://www.rfc-editor.org/rfc/rfc9110.html">RFC 9110：GET 与 HEAD 方法语义</a></li>
+</ul>
 </div>
 <div class="article-likes" data-pagefind-ignore>
 <button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
@@ -119,12 +121,12 @@
 </button><p id="page-like-message" role="status"></p>
 </div>
 <div class="article-tags" data-pagefind-ignore><a href="https://kkjichang.cc/tags/trial-evaluation/"># 试用评估</a><a href="https://kkjichang.cc/tags/network-test/"># 网络测速</a><a href="https://kkjichang.cc/tags/troubleshooting/"># 故障排查</a></div>
-<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/head-get-airport-trial/">← 上一篇</a><a href="https://kkjichang.cc/posts/curl-low-speed-stall-test/">下一篇 →</a></nav>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://kkjichang.cc/posts/curl-retry-hidden-failures/">下一篇 →</a></nav>
 <section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
 </article>
 
 <div class="article-rail">
-<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">自动重试会改变你看到的结果</a><a class="level-2" href="#heading-1">先做不重试基线</a><a class="level-2" href="#heading-2">怎样解读</a><a class="level-2" href="#heading-3">试用与注册建议</a></nav></aside>
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#head-">HEAD 能证明什么</a><a class="level-2" href="#heading">怎样解释差异</a><a class="level-2" href="#heading-1">可选候选入口</a><a class="level-2" href="#heading-2">验收标准</a><a class="level-2" href="#heading-3">参考资料</a></nav></aside>
 <aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
 
 <div class="ad-copy"><h3>FlyBit</h3>
@@ -173,7 +175,7 @@
 </div>
 </dialog>
 
-<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/056370b7-3b1d-4caa-8fce-99432431ced0/","pageTitle":"机场试用开了自动重试还算稳定吗？把重试次数单独记","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/4f232ac0-cead-4a9d-a182-ae4600daef0f/","pageTitle":"curl -I 返回 200 就算机场可用吗？HEAD 与 GET 要分开测","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
 
 </body></html>
 
