@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://kkjichang.cc/</loc>
-    <lastmod>2026-10-01T03:58:35Z</lastmod>
+    <lastmod>2026-10-01T05:02:11Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/categories/client-start/</loc>
@@ -29,20 +29,24 @@
     <lastmod>2026-09-24T02:24:47Z</lastmod>
   </url>
   <url>
+    <loc>https://kkjichang.cc/categories/travel-guides/</loc>
+    <lastmod>2026-10-01T05:00:55Z</lastmod>
+  </url>
+  <url>
     <loc>https://kkjichang.cc/categories/trending-topics/</loc>
     <lastmod>2026-09-30T13:04:02Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/page/2/</loc>
-    <lastmod>2026-10-01T03:58:35Z</lastmod>
+    <lastmod>2026-10-01T05:02:11Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/page/3/</loc>
-    <lastmod>2026-10-01T03:58:35Z</lastmod>
+    <lastmod>2026-10-01T05:02:11Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/page/4/</loc>
-    <lastmod>2026-10-01T03:58:35Z</lastmod>
+    <lastmod>2026-10-01T05:02:11Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/99ba-invite-trial/</loc>
@@ -54,7 +58,7 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/airport-recommendation-start/</loc>
-    <lastmod>2026-10-01T03:58:35Z</lastmod>
+    <lastmod>2026-10-01T05:02:11Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/airport-registration-email-check/</loc>
@@ -66,7 +70,7 @@
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/airport-trial-account-privacy/</loc>
-    <lastmod>2026-10-01T02:59:55Z</lastmod>
+    <lastmod>2026-10-01T05:02:11Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/airport-trial-retry-success-rate/</loc>
@@ -159,6 +163,10 @@
   <url>
     <loc>https://kkjichang.cc/posts/occasional-use-plan-calendar/</loc>
     <lastmod>2026-09-24T02:25:13Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kkjichang.cc/posts/quanzhou-national-day-2026-old-town-guide/</loc>
+    <lastmod>2026-10-01T05:00:55Z</lastmod>
   </url>
   <url>
     <loc>https://kkjichang.cc/posts/rule-global-tun-explained/</loc>
