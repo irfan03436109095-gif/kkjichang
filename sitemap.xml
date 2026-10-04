@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kkjichang.cc/</loc>
-    <lastmod>2026-10-04T01:40:53Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/client-start/</loc>
-    <lastmod>2026-10-01T15:13:59Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/help-security/</loc>
@@ -42,15 +42,15 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/2/</loc>
-    <lastmod>2026-10-04T01:40:53Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/3/</loc>
-    <lastmod>2026-10-04T01:40:53Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/4/</loc>
-    <lastmod>2026-10-04T01:40:53Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/2026-airport-risk-roundup-evidence/</loc>
@@ -66,7 +66,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-download-sha256-check/</loc>
-    <lastmod>2026-10-04T01:40:46Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-fix-regression-check/</loc>
@@ -74,11 +74,15 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-recommendation-start/</loc>
-    <lastmod>2026-10-04T01:40:53Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-registration-email-check/</loc>
     <lastmod>2026-09-22T04:00:27Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/posts/airport-subscription-beginner-illustrated-2026/</loc>
+    <lastmod>2026-10-04T06:34:49Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-subscription-migration-check/</loc>
@@ -218,11 +222,15 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/clash-verge-rev/</loc>
-    <lastmod>2026-10-01T15:13:59Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/clients/</loc>
-    <lastmod>2026-10-01T15:13:59Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/tags/clients/page/2/</loc>
+    <lastmod>2026-10-04T06:34:49Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/dns/</loc>
@@ -254,7 +262,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/privacy/</loc>
-    <lastmod>2026-10-02T05:05:32Z</lastmod>
+    <lastmod>2026-10-04T06:37:33Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/routing/</loc>
