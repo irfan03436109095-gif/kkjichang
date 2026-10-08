@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kkjichang.cc/</loc>
-    <lastmod>2026-10-07T13:26:45Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/client-start/</loc>
@@ -10,7 +10,11 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/help-security/</loc>
-    <lastmod>2026-10-07T01:29:59Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/categories/help-security/page/2/</loc>
+    <lastmod>2026-10-08T01:41:22Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/network-quality/</loc>
@@ -42,19 +46,19 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/2/</loc>
-    <lastmod>2026-10-07T13:26:45Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/3/</loc>
-    <lastmod>2026-10-07T13:26:45Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/4/</loc>
-    <lastmod>2026-10-07T13:26:45Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/5/</loc>
-    <lastmod>2026-10-07T13:26:45Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/2026-airport-risk-roundup-evidence/</loc>
@@ -78,11 +82,11 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-purchase-support-questions/</loc>
-    <lastmod>2026-10-07T13:23:29Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-recommendation-start/</loc>
-    <lastmod>2026-10-07T13:26:45Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-registration-email-check/</loc>
@@ -95,6 +99,10 @@
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-subscription-migration-check/</loc>
     <lastmod>2026-09-23T05:37:16Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/posts/airport-support-remote-assist-permissions/</loc>
+    <lastmod>2026-10-08T01:41:22Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-trial-account-privacy/</loc>
@@ -238,7 +246,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/airport-guide/</loc>
-    <lastmod>2026-10-07T01:29:59Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/clash-verge-rev/</loc>
@@ -282,7 +290,11 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/privacy/</loc>
-    <lastmod>2026-10-07T01:29:59Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/tags/privacy/page/2/</loc>
+    <lastmod>2026-10-08T01:41:22Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/routing/</loc>
@@ -306,11 +318,15 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/troubleshooting/</loc>
-    <lastmod>2026-10-03T06:19:19Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/troubleshooting/page/2/</loc>
-    <lastmod>2026-10-03T06:19:19Z</lastmod>
+    <lastmod>2026-10-08T01:41:36Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/tags/troubleshooting/page/3/</loc>
+    <lastmod>2026-10-08T01:41:22Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/v2rayn/</loc>
