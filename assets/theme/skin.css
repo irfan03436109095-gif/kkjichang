@@ -135,7 +135,11 @@
 .archive-header p { max-width: 760px; font-size: 16px; line-height: 1.9; color: var(--muted); }
 .route-page .pagination { margin-top: 32px; font-size: 14px; }
 .route-page .pagination a { padding: 6px 14px; border: 1px solid var(--line); border-radius: 6px; }
-.route-page.article-page .article-shell { max-width: 1240px; grid-template-columns: minmax(0, 1fr) 240px; gap: 24px 44px; }
+.route-page.article-page .article-shell { max-width: 1368px; grid-template-columns: 300px minmax(0, 1fr); gap: 24px 40px; }
+.route-page.article-page .article-shell > .breadcrumbs { grid-column: 2; grid-row: 1; }
+.route-page.article-page .article-shell > article { grid-column: 2; grid-row: 2; min-width: 0; }
+.route-page.article-page .article-shell > .article-rail { grid-column: 1; grid-row: 2; position: static; display: grid; align-self: start; align-content: start; gap: 20px; height: auto; min-height: 0; max-height: none; overflow: visible; }
+.route-page.article-page .article-shell.route-article-wide { display: block; max-width: 1040px; }
 .route-page .breadcrumbs { font-size: 12px; }
 .route-page .article-header { padding: 0 0 26px; margin-bottom: 28px; border-bottom: 1px solid var(--line); }
 .route-page .article-header h1 { font-size: clamp(28px, 3vw, 40px); line-height: 1.5; letter-spacing: -.025em; margin-top: 12px; text-wrap: balance; }
@@ -151,13 +155,25 @@
 .route-page .toc > div { color: var(--accent); font-size: 13px; }
 .route-page .article-tags { padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; }
 .route-page .ad-slot { margin-bottom: 28px; }
-.route-page .article-rail .ad-slot { grid-auto-rows: max-content; }
-.route-page .article-rail .ad-card { align-self: start; min-height: max-content; }
-.route-page .article-rail .ad-card-mixed .ad-image { position: absolute; top: 16px; left: 16px; width: 40px; height: 40px; object-fit: contain; border-radius: 9px; }
-.route-page .article-rail .ad-card-mixed .ad-copy { padding: 16px; }
-.route-page .article-rail .ad-card-mixed .ad-copy > :first-child { display: flex; align-items: center; min-height: 40px; padding-left: 52px; margin: 0 0 12px; }
-.route-page .article-rail .ad-copy { font-size: 13px; line-height: 1.65; }
-.route-page .article-rail .ad-copy p { margin: 8px 0; }
+.route-page.article-page .article-rail > .toc,
+.route-page.article-page .article-rail > .toc > nav,
+.route-page.article-page .article-rail > .ad-slot { height: auto; min-height: 0; max-height: none; overflow: visible; flex: none; }
+.route-page .article-rail .ad-slot { grid-auto-rows: max-content; margin: 0; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-card { align-self: start; min-height: max-content; border-radius: 18px; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-card-mixed { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 14px; padding: 16px; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-card-mixed .ad-image { position: static; display: block; width: 64px; height: 64px; margin: 0; object-fit: contain; border-radius: 14px; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-card-mixed .ad-copy { min-width: 0; padding: 0; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-card-mixed .ad-copy > :first-child { display: block; min-height: 0; padding: 0; margin: 0 0 6px; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy { font-size: 14px; line-height: 1.65; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy h2,
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy h3,
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy h4 { font-size: 15px; line-height: 1.5; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy p { margin: 6px 0; }
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy h5,
+.route-page .ad-slot:not(.ad-slot-wide) .ad-copy h6 { margin: 8px 0 0; font-size: 10px; font-weight: 500; line-height: 1.6; color: var(--muted); }
+@media (min-width: 981px) {
+  .route-page.article-page .article-rail > .toc { display: block; }
+}
 .route-empty { padding: 76px 24px; text-align: center; }
 .route-empty h1 { font-size: 34px; margin: 16px 0; }
 .route-empty .route-button { margin-top: 16px; }
