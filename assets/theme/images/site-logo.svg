@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+<title id="title">可靠机场推荐</title><desc id="desc">薄荷绿的勾选航线向右上方延伸，代表可靠的选择与新的连接。</desc>
+<defs><linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#17493f"/><stop offset="1" stop-color="#081c2b"/></linearGradient></defs>
+<rect x="2" y="2" width="60" height="60" rx="17" fill="url(#tile)" stroke="#2a7062" stroke-width="1"/>
+<path d="M16 33 26 43 47 22M34 22h13v13" fill="none" stroke="#41f0b7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
