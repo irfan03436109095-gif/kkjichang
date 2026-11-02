@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kkjichang.cc/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/client-start/</loc>
@@ -10,11 +10,11 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/help-security/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/help-security/page/2/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/network-quality/</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/recommendations/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/risk-observations/</loc>
@@ -46,31 +46,31 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/2/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/3/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/4/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/5/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/6/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/7/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/8/</loc>
-    <lastmod>2026-11-02T06:19:35Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/2026-airport-risk-roundup-evidence/</loc>
@@ -93,6 +93,10 @@
     <lastmod>2026-11-02T05:52:37Z</lastmod>
   </url>
   <url>
+    <loc>https://www.kkjichang.cc/posts/airport-no-logs-claim-evidence-check/</loc>
+    <lastmod>2026-11-02T06:44:32Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.kkjichang.cc/posts/airport-plan-comparison/</loc>
     <lastmod>2026-11-02T05:52:37Z</lastmod>
   </url>
@@ -102,7 +106,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-recommendation-start/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-registration-email-check/</loc>
@@ -322,7 +326,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/proxy-account-compromise-recovery-checklist/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/proxy-directory-reliability-service-commitments/</loc>
@@ -378,11 +382,11 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/airport-guide/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/airport-guide/page/2/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/clash-verge-rev/</loc>
@@ -430,11 +434,11 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/privacy/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/privacy/page/2/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/routing/</loc>
@@ -446,15 +450,15 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/page/2/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/page/3/</loc>
-    <lastmod>2026-11-02T05:52:37Z</lastmod>
+    <lastmod>2026-11-02T06:45:59Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/troubleshooting/</loc>
