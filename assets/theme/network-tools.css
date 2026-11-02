@@ -1,0 +1,79 @@
+/* 在线网络工具：仅在访客操作后发起请求，结果样式兼容明暗模式。 */
+.network-tools { margin: 28px 0 44px; font-size: 16px; line-height: 1.7; }
+.network-tools [hidden] { display: none !important; }
+.network-tools-intro { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.network-tools-intro > p { margin: 0; color: var(--muted); }
+.tool-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--soft); color: var(--accent); font-size: 12px; line-height: 1.5; white-space: nowrap; }
+.network-tools-links { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 24px; }
+.network-tools-links > a { display: inline-flex; align-items: center; gap: 20px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); font-size: 14px; color: var(--text); }
+.network-tools-links > a:hover { border-color: var(--accent); color: var(--accent); }
+.network-tools-links > a > span { color: var(--accent); }
+.network-tools-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 24px; }
+.network-tool-panel { min-width: 0; padding: 28px; border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(140deg, var(--soft), transparent 36%), var(--surface); scroll-margin-top: 28px; }
+.tool-panel-heading { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.tool-panel-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 46px; height: 46px; border: 1px solid var(--line); border-radius: 13px; background: var(--soft); color: var(--accent); }
+.tool-panel-kicker { display: block; margin-bottom: 4px; color: var(--accent); font-size: 12px; letter-spacing: .06em; }
+.network-tools .tool-panel-heading h2 { margin: 0; color: var(--text); font-size: 25px; line-height: 1.4; letter-spacing: -.025em; }
+.tool-panel-description { margin: 0 0 24px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.network-tool-form { display: block; margin: 0; }
+.network-tool-form > label { display: block; margin: 18px 0 8px; color: var(--text); font-size: 14px; font-weight: 600; }
+.network-tool-form > label:first-child { margin-top: 0; }
+.network-tool-form input, .network-tool-form select { display: block; box-sizing: border-box; min-width: 0; width: 100%; min-height: 48px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--text); font: inherit; font-size: 16px; line-height: 1.5; }
+.network-tool-form input::placeholder { color: var(--muted); opacity: .85; }
+.network-tool-form input:focus-visible, .network-tool-form select:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.network-tool-form [aria-invalid="true"] { border-color: #bd544d; }
+.network-tools .tool-input-help { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.tool-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.network-tools .tool-actions .route-button { min-height: 44px; padding: 10px 18px; font: inherit; font-size: 14px; font-weight: 600; }
+.network-tools button:disabled { cursor: not-allowed; opacity: .48; transform: none; box-shadow: none; }
+.network-tools [aria-busy="true"] .tool-status { color: var(--accent); }
+.network-tools button:focus-visible, .network-tools a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.tool-status { min-height: 25px; margin: 20px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.tool-status.tool-error, .network-tools .tool-error, .network-tools .tool-note.tool-error { color: #af423e; }
+:root.dark .tool-status.tool-error, :root.dark .network-tools .tool-error, :root.dark .network-tools .tool-note.tool-error { color: #ffaaa3; }
+.tool-result { min-width: 0; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line); overflow-wrap: anywhere; }
+.tool-result-grid, .tool-result-grid dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; margin: 0; }
+.tool-result-grid dl { grid-column: 1 / -1; }
+.tool-result-grid > div, .tool-result-grid dl > div { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); }
+.tool-result-grid dt { margin: 0 0 4px; color: var(--muted); font-size: 12px; font-weight: 400; }
+.tool-result-grid dd { margin: 0; color: var(--text); font-size: 15px; font-weight: 600; overflow-wrap: anywhere; }
+.tool-result-grid .tool-wide { grid-column: 1 / -1; }
+.tool-summary { margin: 0 0 14px; color: var(--text); font-size: 14px; line-height: 1.8; overflow-wrap: anywhere; }
+.network-tools .tool-note { margin: 14px 0 0; color: var(--muted); font-size: 12px; line-height: 1.8; overflow-wrap: anywhere; }
+.network-tools .tool-privacy { margin-top: 22px; }
+.tool-note a, .tool-summary a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.tool-table-wrap { display: block; width: 100%; max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; overscroll-behavior-x: contain; }
+.network-tools .tool-table-wrap table { display: table; width: 100%; min-width: 420px; max-width: none; margin: 0; border-collapse: collapse; font-size: 13px; line-height: 1.7; text-align: left; }
+.tool-table-wrap th, .tool-table-wrap td { padding: 12px; border: 0; border-bottom: 1px solid var(--line); vertical-align: top; white-space: normal; }
+.tool-table-wrap th { background: var(--soft); color: var(--text); font-size: 12px; font-weight: 600; }
+.tool-table-wrap td { color: var(--text); }
+.tool-table-wrap tr:last-child td { border-bottom: 0; }
+.tool-table-wrap small { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+.tool-result pre { max-width: 100%; padding: 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--code); font-size: 12px; overflow-x: auto; }
+@media (max-width: 900px) {
+  .network-tools-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .network-tools { margin-top: 22px; }
+  .network-tools-intro { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .network-tools-links { margin-bottom: 20px; }
+  .network-tool-panel { padding: 22px 18px; border-radius: 14px; }
+  .network-tools .tool-panel-heading h2 { font-size: 23px; }
+  .tool-panel-description { font-size: 14px; }
+  .tool-actions { gap: 10px; }
+  .network-tools .tool-actions .route-button { flex: 1 1 126px; padding-left: 12px; padding-right: 12px; }
+  .tool-result-grid, .tool-result-grid dl { gap: 10px; }
+  .tool-result-grid > div, .tool-result-grid dl > div { padding: 10px; }
+  .tool-table-wrap th, .tool-table-wrap td { padding: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .network-tools a, .network-tools button { transition: none; }
+}
+
+.route-page.network-tools-page .article-shell.route-article-wide { max-width: 1304px; }
+.tool-ip-address { font-size: 26px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 16px; overflow-wrap: anywhere; color: var(--accent); }
+.tool-result details { margin: 12px 0; font-size: 13px; }
+.tool-result details summary { cursor: pointer; color: var(--muted); }
+.network-tools .tool-table-wrap table { min-width: 650px; }
+
+.tool-preview-notice { padding: 16px 18px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; color: var(--text); background: var(--soft); font-size: 14px; }
