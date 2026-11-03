@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="hangxian-guide" data-route-version="1.2.2">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接 · 空空机场-精选推荐</title>
+<meta name="description" content="机场客户端配置修改后怎样检查？区分 YAML 格式、mihomo -t 配置解析和真实连接验收，保留旧配置并按单项改动排查。">
+<meta name="keywords" content="机场推荐,mihomo配置校验,YAML报错,客户端配置,配置回退">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.kkjichang.cc/posts/mihomo-config-test-before-activate/">
+<meta property="og:title" content="机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接">
+<meta property="og:description" content="机场客户端配置修改后怎样检查？区分 YAML 格式、mihomo -t 配置解析和真实连接验收，保留旧配置并按单项改动排查。">
+<meta property="og:url" content="https://www.kkjichang.cc/posts/mihomo-config-test-before-activate/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="空空机场-精选推荐">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png"><meta property="og:image:alt" content="空空机场-精选推荐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接">
+<meta name="twitter:description" content="机场客户端配置修改后怎样检查？区分 YAML 格式、mihomo -t 配置解析和真实连接验收，保留旧配置并按单项改动排查。">
+<meta name="twitter:image" content="https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png">
+<meta name="author" content="空空"><meta property="article:published_time" content="2026-11-03T22:34:45&#43;08:00"><meta property="article:modified_time" content="2026-11-03T22:34:52&#43;08:00"><meta property="article:tag" content="客户端"><meta property="article:tag" content="故障排查"><meta property="article:tag" content="隐私安全">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.kkjichang.cc/posts/mihomo-config-test-before-activate/#article","@type":"BlogPosting","author":{"@type":"Person","name":"空空"},"dateModified":"2026-11-03T22:34:52+08:00","datePublished":"2026-11-03T22:34:45+08:00","description":"机场客户端配置修改后怎样检查？区分 YAML 格式、mihomo -t 配置解析和真实连接验收，保留旧配置并按单项改动排查。","headline":"机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.kkjichang.cc/posts/mihomo-config-test-before-activate/","@type":"WebPage"},"url":"https://www.kkjichang.cc/posts/mihomo-config-test-before-activate/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.kkjichang.cc/","name":"空空机场-精选推荐","position":1},{"@type":"ListItem","item":"https://www.kkjichang.cc/posts/mihomo-config-test-before-activate/","name":"机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接","position":2}]}]}</script>
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/search.css"><script defer src="https://www.kkjichang.cc/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/skin.css"><link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/plans.css"><link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/network-tools.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/reader.css">
+<link rel="icon" href="https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/artalk.css"><script defer src="https://www.kkjichang.cc/assets/theme/artalk.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/theme.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/reader.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/viewer.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.kkjichang.cc/assets/theme/interactions.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/layout.js"></script><script defer src="https://www.kkjichang.cc/assets/theme/plans.js"></script><script defer src="https://www.kkjichang.cc/assets/theme/network-tools.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFK4RK4Q9N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NFK4RK4Q9N');
+</script>
+
+<style id="xblog-article-images-half">main article .prose img{width:50%;max-width:50%;height:auto;display:block;margin-left:auto;margin-right:auto;}</style>
+
+<script defer src="https://www.kkjichang.cc/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-NFK4RK4Q9N" data-site-hosts="www.kkjichang.cc"></script></head>
+
+<body class="reader-page route-page article-page" data-route-home="https://www.kkjichang.cc/" data-route-article-slug="mihomo-config-test-before-activate">
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.kkjichang.cc/"><span class="brand-logo" style="background-image:url('https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png')" aria-hidden="true"></span><span>空空机场-精选推荐</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.kkjichang.cc/">首页</a><a href="https://www.kkjichang.cc/categories/recommendations/">机场推荐</a><a href="https://www.kkjichang.cc/posts/flybit-99ba-comparison/">试用对比</a><a href="https://www.kkjichang.cc/categories/plans-budget/">套餐与预算</a><a href="https://www.kkjichang.cc/categories/client-start/">客户端上手</a><a href="https://www.kkjichang.cc/categories/network-quality/">网络体验</a><a href="https://www.kkjichang.cc/categories/help-security/">排障与安全</a><a href="https://www.kkjichang.cc/posts/editorial-policy/">关于本站</a><a href="https://www.kkjichang.cc/posts/network-tools/">在线工具</a></nav>
+<a class="search-toggle" href="https://www.kkjichang.cc/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="shell route-shell article-shell" data-has-toc="true">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.kkjichang.cc/">空空机场-精选推荐</a></li><li><span aria-current="page">机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接</span></li></ol></nav>
+
+
+
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>选购与使用指南</div>
+<h1 data-pagefind-meta="title">机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接</h1>
+<div class="metadata" data-pagefind-ignore><span>空空</span><time datetime="2026-11-03T22:34:45&#43;08:00">2026-11-03</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.kkjichang.cc/categories/help-security/">排障与安全</a></div>
+</header>
+
+<div class="prose"><p>从教程复制几行 DNS 或分流配置后，客户端突然启动失败，不一定是节点失效。先检查这份配置能否被当前内核解析，往往比立即更换订阅更容易定位。机场推荐教程里的可用示例，也需要结合你的内核和文件结构核对，不能照抄后直接替换原配置。</p>
+<h2 id="heading">适用对象与准备</h2>
+<p>本文适用于已经使用 mihomo、能找到可信内核程序和本地配置的用户。图形客户端可能先合并订阅、覆写与脚本，再生成最终配置；只检查订阅原文，未必检查到了实际运行的内容。如果客户端提供配置校验入口，优先按其说明检查最终生效配置，不要随意修改软件内部文件。</p>
+<p>先复制一份当前可用配置作为备份，再在另一份候选文件上编辑。记录内核版本、原配置名称、改了哪个字段和回退入口。完整配置可能含服务器密码、订阅链接或管理接口密钥，只保存在自己受控的位置，不贴进公开 YAML 检查网站。</p>
+<p><img src="https://www.kkjichang.cc/assets/media/fd6773eb-7822-42cf-b5e5-522ffa8d1929.webp" alt="原配置保留备份，候选配置经过本机校验，失败返回编辑，通过后再进入真实连接验收的示意"></p>
+<p><em>示意图：先保留可用配置，再校验候选配置；解析通过后仍需检查实际连接与规则。</em></p>
+<h2 id="heading-1">第一步：先看格式与层级</h2>
+<p>mihomo 官方语法说明指出，YAML 区分大小写，缩进应使用空格，同一层级要对齐。先查看错误所指行及前后几行，检查缩进、列表前的短横线、冒号后空格和成对引号。错误位置可能只是解析器无法继续的位置，真正原因可能在上一段。</p>
+<p>每次只调整一组相关设置，再做一次检查。不要同时更换节点、DNS、规则文件和内核，否则即便恢复，也难以知道是哪项变化起作用。需要新增字段时，核对自己内核版本支持的官方文档；语法正确并不代表字段写在了正确位置。</p>
+<h2 id="heading-2">第二步：让同一内核解析候选文件</h2>
+<p>官方源码定义 <code>-t</code> 为测试配置后退出，<code>-f</code> 指定配置文件。Windows 可在可信 mihomo 程序所在目录使用下面的形式，路径应换成自己的候选副本：</p>
+<pre><code class="language-powershell">.\mihomo.exe -t -f &quot;.\config-candidate.yaml&quot;
+</code></pre>
+<p>若程序名称不同，按实际名称填写；macOS 或 Linux 按已安装程序的调用方式执行。不要为此下载陌生人打包的工具。看到成功提示后保留检查时间和内核版本；失败则记录错误、修正副本，再重复检查。校验可能涉及配置引用的外部资源和数据目录，不能把这一步宣称为完全离线的纯文本检查；遇到资源缺失或访问失败，应与缩进错误分开处理。</p>
+<h2 id="heading-3">第三步：小范围启用与验收</h2>
+<p>配置解析成功只能证明本次解析未报错，不能证明每个节点可连、DNS 符合预期或规则方向正确。确认备份可恢复后，通过客户端正式入口启用候选配置，做三项小请求：打开可信网页、查看请求命中的规则和出口方向、完成一个自己需要的实际任务。不要用大流量测速代替这些核对。</p>
+<p>如果启动成功但任务失败，保留该次日志，恢复原配置做同条件对照。原配置正常、候选配置异常，就从唯一改动处继续查；两者都失败，则另查本地网络、目标服务与账户状态。向客服提供内核版本、改动字段和脱敏错误即可，完整订阅与凭据不属于公开排障材料。</p>
+<h2 id="heading-4">验收记录怎么写</h2>
+<p>建议写成“某版本内核在某时刻解析此候选文件成功，随后指定网页和规则验收通过，已保留原配置”。如果只完成 <code>-t</code>，就写“解析通过，连接待验收”。这能明确证据范围，也方便下次升级后复查，而不会把一次配置检查误写成长期稳定承诺。</p>
+<h2 id="heading-5">可核验来源</h2>
+<ul>
+<li><a href="https://github.com/MetaCubeX/mihomo/blob/Meta/main.go">mihomo 官方程序源码 main.go</a>：<code>-t</code>、<code>-f</code> 参数及测试后的退出流程。</li>
+<li><a href="https://wiki.metacubex.one/handbook/syntax/">mihomo 官方 YAML 语法说明</a>：大小写、空格缩进、对象与数组结构。</li>
+</ul>
+<p>资料核验日期：2026-11-03。示例说明调用形式，没有声称已在读者设备上执行或验证其配置。</p>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.kkjichang.cc/tags/clients/"># 客户端</a><a href="https://www.kkjichang.cc/tags/troubleshooting/"># 故障排查</a><a href="https://www.kkjichang.cc/tags/privacy/"># 隐私安全</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://www.kkjichang.cc/posts/airport-no-logs-claim-evidence-check/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+
+<div class="article-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">适用对象与准备</a><a class="level-2" href="#heading-1">第一步：先看格式与层级</a><a class="level-2" href="#heading-2">第二步：让同一内核解析候选文件</a><a class="level-2" href="#heading-3">第三步：小范围启用与验收</a><a class="level-2" href="#heading-4">验收记录怎么写</a><a class="level-2" href="#heading-5">可核验来源</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.kkjichang.cc/assets/media/cf3efb59-780b-4ee7-8c28-88688bbfe909.png" alt="FlyBit · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a><a class="ad-card ad-card-mixed" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.kkjichang.cc/assets/media/44185d98-0fd5-4ee7-84af-bb66a0ad4f06.jpg" alt="99吧 · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a></aside></div>
+
+</main>
+
+<footer class="site-footer route-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="noopener noreferrer">FlyBit</a><a href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="noopener noreferrer">99吧</a><a href="https://t.me/five_91" target="_blank" rel="noopener noreferrer">Telegram联系</a><a href="https://t.me/RouteRadarCN" target="_blank" rel="noopener noreferrer">Telegram频道</a></nav>
+<p class="referral-disclosure">推广说明：机场邀请链接可能为推荐方带来奖励。账户、付款与售后由对应服务商提供。</p>
+</footer>
+
+</div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.kkjichang.cc/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.kkjichang.cc/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.kkjichang.cc/pagefind/" base-url="https://www.kkjichang.cc/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/193d6ddf-bc5d-4017-bbed-60f956bb86d1/","pageTitle":"机场配置改完就启用吗？先用 mihomo 本机校验，再验收真实连接","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+
+</body>
+</html>
