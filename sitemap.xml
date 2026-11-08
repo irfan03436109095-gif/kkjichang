@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.kkjichang.cc/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/client-start/</loc>
@@ -10,11 +10,15 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/help-security/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/help-security/page/2/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/categories/help-security/page/3/</loc>
+    <lastmod>2026-11-08T01:23:53Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/categories/network-quality/</loc>
@@ -50,31 +54,35 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/2/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/3/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/4/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/5/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/6/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/7/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/page/8/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
+  </url>
+  <url>
+    <loc>https://www.kkjichang.cc/page/9/</loc>
+    <lastmod>2026-11-08T01:23:53Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/2026-airport-risk-roundup-evidence/</loc>
@@ -118,7 +126,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-recommendation-start/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/airport-registration-email-check/</loc>
@@ -181,6 +189,10 @@
     <lastmod>2026-11-07T11:15:41Z</lastmod>
   </url>
   <url>
+    <loc>https://www.kkjichang.cc/posts/cloudflare-1020-site-block/</loc>
+    <lastmod>2026-11-08T01:23:53Z</lastmod>
+  </url>
+  <url>
     <loc>https://www.kkjichang.cc/posts/connection-timeout-cross-check/</loc>
     <lastmod>2026-11-07T11:15:41Z</lastmod>
   </url>
@@ -206,7 +218,7 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/device-limit-versus-concurrent-ip-trial/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/posts/dns-node-website-separation/</loc>
@@ -486,31 +498,31 @@
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/page/2/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/page/3/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/trial-evaluation/page/4/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/troubleshooting/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/troubleshooting/page/2/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/troubleshooting/page/3/</loc>
-    <lastmod>2026-11-07T11:15:41Z</lastmod>
+    <lastmod>2026-11-08T01:23:58Z</lastmod>
   </url>
   <url>
     <loc>https://www.kkjichang.cc/tags/v2rayn/</loc>
