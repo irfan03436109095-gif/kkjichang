@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="hangxian-guide" data-route-version="1.2.3">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式 · 空空机场-精选推荐</title>
+<meta name="description" content="安卓点击机场链接为何跑到浏览器或另一个 App？按链接用途、受支持域名、系统默认设置和官方导入入口逐步核对。">
+<meta name="keywords" content="Android App Links,默认打开方式,机场订阅导入,安卓客户端,链接安全">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://www.kkjichang.cc/posts/android-app-links-subscription-open-check/">
+<meta property="og:title" content="安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式">
+<meta property="og:description" content="安卓点击机场链接为何跑到浏览器或另一个 App？按链接用途、受支持域名、系统默认设置和官方导入入口逐步核对。">
+<meta property="og:url" content="https://www.kkjichang.cc/posts/android-app-links-subscription-open-check/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="空空机场-精选推荐">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png"><meta property="og:image:alt" content="空空机场-精选推荐">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式">
+<meta name="twitter:description" content="安卓点击机场链接为何跑到浏览器或另一个 App？按链接用途、受支持域名、系统默认设置和官方导入入口逐步核对。">
+<meta name="twitter:image" content="https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png">
+<meta name="author" content="空空"><meta property="article:published_time" content="2026-11-21T09:43:00&#43;08:00"><meta property="article:modified_time" content="2026-11-21T09:43:11&#43;08:00"><meta property="article:tag" content="客户端"><meta property="article:tag" content="故障排查"><meta property="article:tag" content="隐私安全">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@id":"https://www.kkjichang.cc/posts/android-app-links-subscription-open-check/#article","@type":"BlogPosting","author":{"@type":"Person","name":"空空"},"dateModified":"2026-11-21T09:43:11+08:00","datePublished":"2026-11-21T09:43:00+08:00","description":"安卓点击机场链接为何跑到浏览器或另一个 App？按链接用途、受支持域名、系统默认设置和官方导入入口逐步核对。","headline":"安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式","inLanguage":"zh-CN","mainEntityOfPage":{"@id":"https://www.kkjichang.cc/posts/android-app-links-subscription-open-check/","@type":"WebPage"},"url":"https://www.kkjichang.cc/posts/android-app-links-subscription-open-check/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://www.kkjichang.cc/","name":"空空机场-精选推荐","position":1},{"@type":"ListItem","item":"https://www.kkjichang.cc/posts/android-app-links-subscription-open-check/","name":"安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式","position":2}]}]}</script>
+
+<script>(()=>{let mode='system';try{const saved=localStorage.getItem('reader-theme');if(['system','light','dark'].includes(saved))mode=saved}catch{}const root=document.documentElement;root.dataset.colorMode=mode;root.classList.toggle('dark',mode==='dark'||(mode==='system'&&matchMedia('(prefers-color-scheme: dark)').matches))})();</script>
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/style.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/advertisements.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/search.css"><script defer src="https://www.kkjichang.cc/assets/theme/search.js"></script>
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/skin.css"><link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/plans.css"><link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/network-tools.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/viewer.css">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/reader.css">
+<link rel="icon" href="https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png">
+<link rel="stylesheet" href="https://www.kkjichang.cc/assets/theme/artalk.css"><script defer src="https://www.kkjichang.cc/assets/theme/artalk.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/theme.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/reader.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/viewer.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/image-viewer.js"></script>
+
+<script defer src="https://www.kkjichang.cc/assets/theme/interactions.js"></script>
+<script defer src="https://www.kkjichang.cc/assets/theme/layout.js"></script><script defer src="https://www.kkjichang.cc/assets/theme/plans.js"></script><script defer src="https://www.kkjichang.cc/assets/theme/network-tools.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NFK4RK4Q9N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NFK4RK4Q9N');
+</script>
+
+<style id="xblog-article-images-half">main article .prose img{width:50%;max-width:50%;height:auto;display:block;margin-left:auto;margin-right:auto;}</style>
+
+<script defer src="https://www.kkjichang.cc/assets/xblog/google-analytics.js" data-xblog-google-analytics="G-NFK4RK4Q9N" data-site-hosts="www.kkjichang.cc"></script></head>
+
+<body class="reader-page route-page article-page" data-route-home="https://www.kkjichang.cc/" data-route-article-slug="android-app-links-subscription-open-check">
+<a class="skip" href="#main">跳到正文</a>
+
+<header class="site-header">
+<div class="header-inner">
+<a class="brand" href="https://www.kkjichang.cc/"><span class="brand-logo" style="background-image:url('https://www.kkjichang.cc/assets/media/bf8b244a-101b-4e58-a840-fc9080d57cbc.png')" aria-hidden="true"></span><span>空空机场-精选推荐</span></a>
+<nav id="site-navigation" aria-label="站点导航"><a href="https://www.kkjichang.cc/">首页</a><a href="https://www.kkjichang.cc/categories/recommendations/">机场推荐</a><a href="https://www.kkjichang.cc/posts/flybit-99ba-comparison/">试用对比</a><a href="https://www.kkjichang.cc/categories/plans-budget/">套餐与预算</a><a href="https://www.kkjichang.cc/categories/client-start/">客户端上手</a><a href="https://www.kkjichang.cc/categories/network-quality/">网络体验</a><a href="https://www.kkjichang.cc/categories/help-security/">排障与安全</a><a href="https://www.kkjichang.cc/posts/editorial-policy/">关于本站</a><a href="https://www.kkjichang.cc/posts/network-tools/">在线工具</a></nav>
+<a class="search-toggle" href="https://www.kkjichang.cc/search/" data-open-dialog="search-dialog" aria-haspopup="dialog" aria-controls="search-dialog" aria-label="搜索" title="搜索"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></a>
+<button id="theme-mode" class="theme-toggle theme-cycle" type="button" aria-label="明暗模式：跟随系统，点击切换为明亮" title="跟随系统 · 点击切换为明亮">
+<svg class="theme-icon-system" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+<svg class="theme-icon-moon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.2 15.5A8.5 8.5 0 0 1 8.5 3.8 8.5 8.5 0 1 0 20.2 15.5Z"/></svg>
+<svg class="theme-icon-sun" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+</button>
+<span id="theme-mode-status" class="visually-hidden" role="status" aria-live="polite"></span>
+<button id="menu-toggle" class="menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" aria-label="打开菜单" title="打开菜单">
+<svg class="menu-icon-open" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+<svg class="menu-icon-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>
+</button>
+</div>
+</header>
+
+<div class="page-viewport article-viewport"><div class="page-scroll article-scroll">
+<main id="main" tabindex="-1" class="shell route-shell article-shell" data-has-toc="true">
+
+<nav class="breadcrumbs" aria-label="面包屑导航"><ol><li><a href="https://www.kkjichang.cc/">空空机场-精选推荐</a></li><li><span aria-current="page">安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式</span></li></ol></nav>
+
+
+
+<article data-pagefind-body>
+<header class="article-header">
+<div class="eyebrow" data-pagefind-ignore>选购与使用指南</div>
+<h1 data-pagefind-meta="title">安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式</h1>
+<div class="metadata" data-pagefind-ignore><span>空空</span><time datetime="2026-11-21T09:43:00&#43;08:00">2026-11-21</time><span><span id="page-views">—</span> 次阅读</span></div>
+<div class="chips" data-pagefind-ignore><a href="https://www.kkjichang.cc/categories/help-security/">排障与安全</a></div>
+</header>
+
+<div class="prose"><p>你从机场账号面板点击一个按钮，Android 把它交给浏览器；另一台手机却打开了 App。先查<strong>链接由哪个应用接收</strong>，再谈网络故障。Android App Links 可以把通过关联验证的网页地址交给对应应用。这验证的是网站和应用的关联，不替你判断套餐、付款入口或配置文件是否合适。</p>
+<h2 id="heading">先确定你在打开哪种链接</h2>
+<ul>
+<li><strong>公开帮助页</strong>本来可以在浏览器读，不必为让它跳转而改所有默认设置。</li>
+<li><strong>官方文档明确支持一键导入的链接</strong>才有应被哪个客户端接收的预期。不要从“没跳 App”倒推出订阅无效。</li>
+<li><strong>只供客户端粘贴的订阅地址</strong>可能带凭据，不适合贴到地址栏、公共转换器或聊天记录里测试跳转。</li>
+</ul>
+<p><img src="https://www.kkjichang.cc/assets/media/1390b9d1-ddc7-4f38-abca-0a4bcb2c4ae1.webp" alt="一个链接经分岔路标分别指向网页窗口和带核对标记的应用图标"></p>
+<p>示意图：由网页还是 App 处理取决于系统和关联设置；关联标记不是服务商背书。</p>
+<h2 id="heading-1">只检查目标应用的默认行为</h2>
+<ol>
+<li><strong>确认来源和接收者。</strong> 从已知官网和客户端发布渠道核对应用名称与开发者。系统询问用哪个 App 时，识别后如有“仅一次”，先这样选，不急着设为永久默认。</li>
+<li><strong>打开系统的应用信息。</strong> 在 Pixel 上可从设置的“应用”进入指定 App，查看“默认打开”或受支持的链接；厂商菜单可能不同。若误选过应用，可清除那一个应用的默认偏好，不必重置全部应用或浏览器数据。</li>
+<li><strong>先测无凭据的同类链接。</strong> 厂商若提供同域、同用途的公开演示，可用它确认接收者。帮助页与导入页路径可能不同，因此这一步不证明私密订阅可导入。</li>
+<li><strong>回到熟悉的入口完成导入。</strong> 如果服务支持手动导入，就在可信客户端的导入界面粘贴。若官方渠道不能解释接收者，不把订阅交给突然弹出的应用。</li>
+</ol>
+<h2 id="heading-2">验收分两次做</h2>
+<p>先看打开链接后的应用或网页是否符合预期，再在客户端内验证订阅更新及连接。一键跳转失败但手动导入正常，优先查链接处理；跳转正确却没有配置，再查格式、订阅权限和当前网络。这两层分开，通常不用换套餐就能让问题说清楚。</p>
+<h2 id="heading-3">延伸阅读</h2>
+<ul>
+<li><a href="https://www.kkjichang.cc/posts/subscription-clipboard-read-write-permission/">手动复制订阅时怎样区分剪贴板读写授权</a></li>
+</ul>
+<h2 id="heading-4">参考来源</h2>
+<ul>
+<li><a href="https://developer.android.com/training/app-links/about">Android Developers：关于经过验证的 Android App Links</a></li>
+<li><a href="https://support.google.com/pixelphone/answer/6271667?hl=en">Google Pixel 帮助：设置或清除默认应用</a></li>
+</ul>
+<p>资料核验日期：2026-11-21（北京时间）。</p>
+</div>
+<div class="article-likes" data-pagefind-ignore>
+<button id="page-like" class="like-button" type="button" aria-pressed="false" aria-describedby="page-like-message" disabled>
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/></svg>
+<span id="page-like-label">点赞</span><span id="page-like-count">—</span>
+</button><p id="page-like-message" role="status"></p>
+</div>
+<div class="article-tags" data-pagefind-ignore><a href="https://www.kkjichang.cc/tags/clients/"># 客户端</a><a href="https://www.kkjichang.cc/tags/troubleshooting/"># 故障排查</a><a href="https://www.kkjichang.cc/tags/privacy/"># 隐私安全</a></div>
+<nav class="pagination" aria-label="相邻文章" data-pagefind-ignore><a href="https://www.kkjichang.cc/posts/airport-recommendation-start/">← 上一篇</a><a href="https://www.kkjichang.cc/posts/subscription-clipboard-read-write-permission/">下一篇 →</a></nav>
+<section class="comments-section" data-pagefind-ignore><h2>评论</h2><div id="comments"></div></section>
+</article>
+
+<div class="article-rail">
+<aside class="toc"><div>本篇目录</div><nav aria-label="文章目录"><a class="level-2" href="#heading">先确定你在打开哪种链接</a><a class="level-2" href="#heading-1">只检查目标应用的默认行为</a><a class="level-2" href="#heading-2">验收分两次做</a><a class="level-2" href="#heading-3">延伸阅读</a><a class="level-2" href="#heading-4">参考来源</a></nav></aside>
+<aside class="ad-slot" aria-label="文章相关内容" data-ad-position="article_sidebar" data-pagefind-ignore><a class="ad-card ad-card-mixed" href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="sponsored noopener noreferrer" aria-label="FlyBit · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.kkjichang.cc/assets/media/cf3efb59-780b-4ee7-8c28-88688bbfe909.png" alt="FlyBit · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>FlyBit</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a><a class="ad-card ad-card-mixed" href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="sponsored noopener noreferrer" aria-label="99吧 · 内容页侧边邀请入口（在新标签页打开）" data-ad-link>
+<img class="ad-image" src="https://www.kkjichang.cc/assets/media/44185d98-0fd5-4ee7-84af-bb66a0ad4f06.jpg" alt="99吧 · 内容页侧边邀请入口" loading="lazy" decoding="async">
+<div class="ad-copy"><h3>99吧</h3>
+<p>先看当前试用与套餐，再决定是否适合自己。</p>
+<h6>推广链接 · 资格与费用以服务方页面为准</h6>
+</div>
+</a></aside></div>
+
+</main>
+
+<footer class="site-footer route-footer">
+<nav class="friend-links" aria-label="友情链接"><span class="friend-links-label">友情链接</span><a href="https://goflybit.com/#/register?code=gPinVG8C" target="_blank" rel="noopener noreferrer">FlyBit</a><a href="https://99ba.net/#/register?code=sExBbdk9" target="_blank" rel="noopener noreferrer">99吧</a><a href="https://t.me/five_91" target="_blank" rel="noopener noreferrer">Telegram联系</a><a href="https://t.me/RouteRadarCN" target="_blank" rel="noopener noreferrer">Telegram频道</a></nav>
+<p class="referral-disclosure">推广说明：机场邀请链接可能为推荐方带来奖励。账户、付款与售后由对应服务商提供。</p>
+</footer>
+
+</div>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="返回顶部" title="返回顶部" hidden>
+<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h14M12 20V8m-5 5 5-5 5 5"/></svg>
+</button>
+</div>
+
+
+
+<dialog id="search-dialog" class="reader-dialog site-search" aria-labelledby="search-title" data-reader-dialog data-pagefind-ignore>
+<header class="reader-dialog-header"><h2 id="search-title">搜索文章</h2><button class="dialog-close" type="button" data-close-dialog aria-label="关闭搜索" title="关闭搜索">×</button></header>
+<div class="reader-dialog-body">
+
+<div id="site-search-ui" data-module="https://www.kkjichang.cc/pagefind/pagefind-component-ui.js" data-stylesheet="https://www.kkjichang.cc/pagefind/pagefind-component-ui.css" hidden>
+
+<pagefind-config bundle-path="https://www.kkjichang.cc/pagefind/" base-url="https://www.kkjichang.cc/" lang="zh-cn" no-worker></pagefind-config>
+<pagefind-input placeholder="搜索文章标题或正文"></pagefind-input>
+<pagefind-summary></pagefind-summary>
+<pagefind-results></pagefind-results>
+</div>
+<p id="search-status" class="search-status" role="status">正在加载搜索…</p>
+<button id="search-retry" class="button" type="button" hidden>重新加载</button>
+
+</div>
+</dialog>
+
+<script id="blog-comments-config" type="application/json">{"comments":true,"likes":true,"locale":"zh-CN","pageKey":"/p/ef09b1ee-f7aa-464c-b51e-627e7c41b565/","pageTitle":"安卓版机场链接在浏览器和 App 之间跳转？先核对默认打开方式","server":"https://upfqpobmiewm.sealosgzg.site","site":"xblog-18168b00-48e0-484a-a5f6-8b375bc72958","views":true,"viewsBase":0}</script>
+
+</body>
+</html>
