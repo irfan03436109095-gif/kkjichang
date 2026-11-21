@@ -52,7 +52,7 @@
 .route-plan-tags span:first-child { color: var(--accent); background: var(--soft); }
 .route-plan-save { display: none; }
 .catalog-ready .route-plan-save { display: block; }
-.route-plan-actions { display: flex; flex-direction: column; gap: 20px; grid-column: 2; grid-row: 2 / 5; align-self: end; justify-self: end; }
+.route-plan-actions { display: flex; flex-direction: column; gap: 12px; grid-column: 2; grid-row: 2 / 5; align-self: end; justify-self: end; }
 .route-plan-actions [data-plan-compare] { display: none; }
 .catalog-ready .route-plan-actions [data-plan-compare] { display: inline-flex; }
 .catalog-ready .route-plan-actions { display: flex; }
@@ -185,6 +185,7 @@
   .route-plan-traffic small { font-size: 10px; }
   .route-plan-tags { gap: 4px; }
   .route-plan-tags span { font-size: 10px; padding: 2px 5px; }
+  .route-plan-actions { gap: 10px; }
   .route-plan-actions .route-button { width: 118px; min-height: 40px; font-size: 13px; padding: 8px; }
   .route-compare-bar { flex-direction: column; align-items: stretch; padding: 14px 16px; gap: 12px; bottom: 12px; }
   .route-compare-actions { justify-content: flex-end; gap: 20px; }

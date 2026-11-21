@@ -63,7 +63,7 @@ function renderComparison() {
 }
 function updateComparisonLinks() {
   document.querySelectorAll('[data-plan-comparison-link]').forEach(a=>{a.href=comparisonURL();});
-  document.querySelectorAll('.route-plan-actions > a').forEach(a=>{const url=new URL(a.href);url.searchParams.set('plans',[...comparison].join(','));a.href=url.href;});
+  document.querySelectorAll('.route-plan-actions > a[data-plan-detail-link]').forEach(a=>{const url=new URL(a.href);url.searchParams.set('plans',[...comparison].join(','));a.href=url.href;});
   const destination=new URL(articleURL('airport-plan-comparison'));
   const contextPaths=new Set([...plans.map(p=>p.detailSlug),'airport-plan-comparison','flybit-invite-start','99ba-invite-trial','flybit-99ba-comparison'].map(s=>new URL(articleURL(s)).pathname));
   document.querySelectorAll('.prose a[href],.service-bottom a[href],.hero-secondary').forEach(a=>{const url=new URL(a.href);if(url.origin===destination.origin&&contextPaths.has(url.pathname)){url.searchParams.set('plans',[...comparison].join(','));a.href=url.href;}});
